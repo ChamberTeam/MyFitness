@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Universal", "Universal", "{BC2A29D6-421A-4C89-BCD6-D2A2A7D68C21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFitness.Universal", "Universal\MyFitness.Universal\MyFitness.Universal.csproj", "{4418F992-77C0-44C9-AF3B-04D43A50B038}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|ARM = Release|ARM
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4418F992-77C0-44C9-AF3B-04D43A50B038}.Debug|ARM.ActiveCfg = Debug|ARM
+		{4418F992-77C0-44C9-AF3B-04D43A50B038}.Debug|ARM.Build.0 = Debug|ARM
+		{4418F992-77C0-44C9-AF3B-04D43A50B038}.Debug|ARM.Deploy.0 = Debug|ARM
+		{4418F992-77C0-44C9-AF3B-04D43A50B038}.Debug|x64.ActiveCfg = Debug|x64
+		{4418F992-77C0-44C9-AF3B-04D43A50B038}.Debug|x64.Build.0 = Debug|x64
+		{4418F992-77C0-44C9-AF3B-04D43A50B038}.Debug|x64.Deploy.0 = Debug|x64
+		{4418F992-77C0-44C9-AF3B-04D43A50B038}.Debug|x86.ActiveCfg = Debug|x86
+		{4418F992-77C0-44C9-AF3B-04D43A50B038}.Debug|x86.Build.0 = Debug|x86
+		{4418F992-77C0-44C9-AF3B-04D43A50B038}.Debug|x86.Deploy.0 = Debug|x86
+		{4418F992-77C0-44C9-AF3B-04D43A50B038}.Release|ARM.ActiveCfg = Release|ARM
+		{4418F992-77C0-44C9-AF3B-04D43A50B038}.Release|ARM.Build.0 = Release|ARM
+		{4418F992-77C0-44C9-AF3B-04D43A50B038}.Release|ARM.Deploy.0 = Release|ARM
+		{4418F992-77C0-44C9-AF3B-04D43A50B038}.Release|x64.ActiveCfg = Release|x64
+		{4418F992-77C0-44C9-AF3B-04D43A50B038}.Release|x64.Build.0 = Release|x64
+		{4418F992-77C0-44C9-AF3B-04D43A50B038}.Release|x64.Deploy.0 = Release|x64
+		{4418F992-77C0-44C9-AF3B-04D43A50B038}.Release|x86.ActiveCfg = Release|x86
+		{4418F992-77C0-44C9-AF3B-04D43A50B038}.Release|x86.Build.0 = Release|x86
+		{4418F992-77C0-44C9-AF3B-04D43A50B038}.Release|x86.Deploy.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4418F992-77C0-44C9-AF3B-04D43A50B038} = {BC2A29D6-421A-4C89-BCD6-D2A2A7D68C21}
+	EndGlobalSection
+EndGlobal
