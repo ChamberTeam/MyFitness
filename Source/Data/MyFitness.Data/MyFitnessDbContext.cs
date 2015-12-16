@@ -1,19 +1,20 @@
 ﻿namespace MyFitness.Data
 {
+    using System.Data.Entity;
+
     using Microsoft.AspNet.Identity.EntityFramework;
-    using MyFitness.Data.Models;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
+    using Models;
 
     public class MyFitnessDbContext : IdentityDbContext<User>
     {
         public MyFitnessDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("MyFitnessDbConnection", throwIfV1Schema: false)
         {
         }
+
+        public virtual IDbSet<FitnessProgram> FitnessPrograms { get; set; }
+
+        public virtual IDbSet<Exercise> Exercises { get; set; }
 
         public static MyFitnessDbContext Create()
         {

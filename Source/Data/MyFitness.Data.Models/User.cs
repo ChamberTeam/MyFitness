@@ -5,9 +5,18 @@
 
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
-
+    using System.Collections.Generic;
     public class User : IdentityUser
     {
+        private ICollection<FitnessProgram> programs;
+
+        public User()
+        {
+            this.programs = new HashSet<FitnessProgram>();
+        }
+
+        public virtual ICollection<FitnessProgram> Programs { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager, string authenticationType)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
