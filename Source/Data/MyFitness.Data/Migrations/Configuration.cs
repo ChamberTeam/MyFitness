@@ -1,5 +1,6 @@
 namespace MyFitness.Data.Migrations
 {
+    using Models;
     using System.Data.Entity.Migrations;
 
     public sealed class Configuration : DbMigrationsConfiguration<MyFitnessDbContext>
@@ -12,18 +13,48 @@ namespace MyFitness.Data.Migrations
 
         protected override void Seed(MyFitnessDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+        //   var category = new Category
+        //   {
+        //       Name = "WeightLoss"
+        //   };
+        //
+        //   context.Categories.Add(category);
+        //
+        //   context.SaveChanges();
+        //
+        //   var exercise = new Exercise
+        //   {
+        //       Category = category,
+        //       Description = "This is deep description",
+        //       Name = "Pesho trenira"
+        //   };
+        //
+        //   var exercise2 = new Exercise
+        //   {
+        //       Category = category,
+        //       Description = "This is no description",
+        //       Name = "Pesho pee"
+        //   };
+        //
+        //   context.Exercises.Add(exercise);
+        //   context.Exercises.Add(exercise2);
+        //
+        //   context.SaveChanges();
+        //
+        //   var fitnessProgram = new FitnessProgram
+        //   {
+        //       Name = "Good program",
+        //       Description = "Really  good program",
+        //       SuitableFor = Suitable.Novice,
+        //       Category = category
+        //   };
+        //
+        //   fitnessProgram.Exercises.Add(exercise);
+        //   fitnessProgram.Exercises.Add(exercise2);
+        //
+        //   context.FitnessPrograms.Add(fitnessProgram);
+        //
+        //   context.SaveChanges();
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 
-namespace MyFitness.Server.Api.Models
+namespace MyFitness.Server.Api.Models.Account
 {
     // Models used as parameters to AccountController actions.
 

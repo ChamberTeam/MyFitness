@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MyFitness.Server.Api.Models
+namespace MyFitness.Server.Api.Models.Account
 {
     // Models returned by AccountController actions.
 

@@ -17,6 +17,7 @@ using MyFitness.Server.Api.Models;
 using MyFitness.Server.Api.Providers;
 using MyFitness.Server.Api.Results;
 using MyFitness.Data.Models;
+using MyFitness.Server.Api.Models.Account;
 
 namespace MyFitness.Server.Api.Controllers
 {

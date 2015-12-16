@@ -10,7 +10,7 @@
     using Data.Common.Repositories;
     using Data;
     using Common.Constants;
-
+    using MyFitness.Common.Constants;
     public static class NinjectConfig
     {
         public static IKernel CreateKernel()
