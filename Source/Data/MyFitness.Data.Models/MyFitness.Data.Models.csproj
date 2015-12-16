@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Category.cs" />
     <Compile Include="Suitable.cs" />
     <Compile Include="Exercise.cs" />
     <Compile Include="FitnessProgram.cs" />

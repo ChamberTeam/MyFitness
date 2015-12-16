@@ -15,7 +15,11 @@
             this.programs = new HashSet<FitnessProgram>();
         }
 
-        public virtual ICollection<FitnessProgram> Programs { get; set; }
+        public virtual ICollection<FitnessProgram> Programs
+        {
+            get { return this.programs; }
+            set { this.programs = value; }
+        }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager, string authenticationType)
         {

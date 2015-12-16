@@ -1,15 +1,16 @@
 ﻿namespace MyFitness.Data.Models
 {
     using System.Collections.Generic;
-
     using MyFitness.Data.Common;
 
-    public class Exercise : IDeletableEntity
+    public class Category : IDeletableEntity
     {
+        private ICollection<Exercise> exercises;
         private ICollection<FitnessProgram> fitnessPrograms;
 
-        public Exercise()
+        public Category()
         {
+            this.exercises = new HashSet<Exercise>();
             this.fitnessPrograms = new HashSet<FitnessProgram>();
         }
 
@@ -17,16 +18,18 @@
 
         public string Name { get; set; }
 
-        public string Description { get; set; }
-
-        public virtual Category Category { get; set; }
-
-        public bool IsDeleted { get; set; }
+        public virtual ICollection<Exercise> Exercises
+        {
+            get { return this.exercises; }
+            set { this.exercises = value; }
+        }
 
         public virtual ICollection<FitnessProgram> FitnessPrograms
         {
             get { return this.fitnessPrograms; }
             set { this.fitnessPrograms = value; }
         }
+
+        public bool IsDeleted { get; set; }
     }
 }
