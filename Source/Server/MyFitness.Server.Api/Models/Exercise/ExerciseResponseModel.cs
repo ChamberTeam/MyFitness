@@ -5,8 +5,10 @@
     using MyFitness.Data.Models;
     using MyFitness.Server.Infrastructure.Mapping;
     using System.Collections.Generic;
+    using AutoMapper;
+    using System;
 
-    public class ExerciseResponseModel : IMapFrom<Exercise>
+    public class ExerciseResponseModel : IMapFrom<Exercise>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
@@ -14,8 +16,12 @@
 
         public string Description { get; set; }
 
-        public CategoryResponseModel Category { get; set; }
+        public string CategoryName { get; set; }
 
-        public virtual IEnumerable<FitnessProgramResponseModel> FitnessPrograms { get; set; }
+        public void CreateMappings(IConfiguration config)
+        {
+            config.CreateMap<Exercise, ExerciseResponseModel>()
+                .ForMember(e => e.CategoryName, opts => opts.MapFrom(e => e.Category.Name));
+        }
     }
 }

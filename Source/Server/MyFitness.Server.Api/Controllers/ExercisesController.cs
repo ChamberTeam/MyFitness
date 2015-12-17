@@ -13,17 +13,17 @@ using System.Web.Http;
 namespace MyFitness.Server.Api.Controllers
 {
     
-    public class ExercisesController : BaseAuthorizationController
+    public class ExercisesController : ApiController
     {
         private readonly IExercisesService exercisesService;
 
-        public ExercisesController(IUsersService usersService, IExercisesService exercisesService)
-            : base(usersService)
+        public ExercisesController(IExercisesService exercisesService)
+          //  : base(usersService)
         {
             this.exercisesService = exercisesService;
         }
 
-        [Authorize]
+   //     [Authorize]
         [HttpGet]
         public IHttpActionResult GetById(int id)
         {
@@ -32,7 +32,7 @@ namespace MyFitness.Server.Api.Controllers
                 .ProjectTo<ExerciseResponseModel>()
                 .ToList();
 
-            if (model == null)
+            if (model.Count == 0)
             {
                 return this.BadRequest(MessageConstants.ExerciseWithIdDoesNotExists);
             }
@@ -40,7 +40,7 @@ namespace MyFitness.Server.Api.Controllers
             return this.Ok(model);
         }
 
-        [Authorize]
+       // [Authorize]
         [HttpGet]
         public IHttpActionResult GetAll()
         {

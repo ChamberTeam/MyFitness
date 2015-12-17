@@ -26,9 +26,11 @@ namespace MyFitness.Services
 
         public IQueryable<Exercise> GetById(int id)
         {
-            return this.exercises
+            var us =  this.exercises
                 .All()
                 .Where(e => e.Id == id);
+
+            return us;
         }
     }
 }
