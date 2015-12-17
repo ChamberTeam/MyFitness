@@ -34,5 +34,18 @@
             return this.categories
                 .All();
         }
+
+        public Category Add(string name)
+        {
+            var category = new Category
+            {
+                Name = name
+            };
+
+            this.categories.Add(category);
+            this.categories.SaveChanges();
+
+            return category;
+        }
     }
 }

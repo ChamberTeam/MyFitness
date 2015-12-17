@@ -1,12 +1,8 @@
 ﻿namespace MyFitness.Server.Api.Models.Exercise
 {
-    using Category;
-    using FitnessProgram;
+    using AutoMapper;
     using MyFitness.Data.Models;
     using MyFitness.Server.Infrastructure.Mapping;
-    using System.Collections.Generic;
-    using AutoMapper;
-    using System;
 
     public class ExerciseResponseModel : IMapFrom<Exercise>, IHaveCustomMappings
     {

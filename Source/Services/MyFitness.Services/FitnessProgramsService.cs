@@ -30,5 +30,34 @@ namespace MyFitness.Services
             return this.fitnessPrograms
                 .All();
         }
+
+        public FitnessProgram Add(
+            string name, 
+            string description,
+            Suitable suitableFor,
+            Category category)
+        {
+            var fitnessProgram = new FitnessProgram
+            {
+                Category = category,
+                Name = name,
+                Description = description,
+                SuitableFor = suitableFor
+            };
+
+            this.fitnessPrograms.Add(fitnessProgram);
+            this.fitnessPrograms.SaveChanges();
+
+            return fitnessProgram;
+        }
+
+        public FitnessProgram AddExerciseToFitnessProgram(Exercise exercise, FitnessProgram fitnessProgram)
+        {
+            fitnessProgram.Exercises.Add(exercise);
+
+            this.fitnessPrograms.SaveChanges();
+
+            return fitnessProgram;
+        }
     }
 }

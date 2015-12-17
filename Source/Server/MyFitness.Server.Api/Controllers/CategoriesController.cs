@@ -1,23 +1,20 @@
 ﻿namespace MyFitness.Server.Api.Controllers
 {
+    using System.Linq;
+    using System.Web.Http;
+
+    using AutoMapper;
     using AutoMapper.QueryableExtensions;
-    using MyFitness.Server.Api.Controllers.Base;
+    using Infrastructure.Validation;
     using MyFitness.Server.Api.Models.Category;
     using MyFitness.Server.Common.Constants;
     using MyFitness.Services.Contracts;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Net;
-    using System.Net.Http;
-    using System.Web.Http;
 
-    public class CategoriesController : BaseAuthorizationController
+    public class CategoriesController : ApiController
     {
         private readonly ICategoriesService categoriesService;
 
-        public CategoriesController(IUsersService usersService, ICategoriesService categoriesService)
-            : base(usersService)
+        public CategoriesController(ICategoriesService categoriesService)
         {
             this.categoriesService = categoriesService;
         }
@@ -52,6 +49,16 @@
             }
 
             return this.Ok(model);
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateModel]
+        public IHttpActionResult Add(CategoryRequestModel category)
+        {
+            var addedCategory = this.categoriesService.Add(category.Name);
+
+            return this.Ok(Mapper.Map<CategoryResponseModel>(addedCategory));
         }
     }
 }

@@ -3,7 +3,6 @@
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
     using Infrastructure.Validation;
-    using MyFitness.Server.Api.Controllers.Base;
     using MyFitness.Server.Api.Models.Exercise;
     using MyFitness.Server.Common.Constants;
     using MyFitness.Services.Contracts;
@@ -14,13 +13,12 @@
     using System.Net.Http;
     using System.Web.Http;
 
-    public class ExercisesController : BaseAuthorizationController
+    public class ExercisesController : ApiController
     {
         private readonly IExercisesService exercisesService;
         private readonly ICategoriesService categoriesService;
 
-        public ExercisesController(IUsersService usersService, IExercisesService exercisesService, ICategoriesService categoriesService)
-            : base(usersService)
+        public ExercisesController(IExercisesService exercisesService, ICategoriesService categoriesService)
         {
             this.exercisesService = exercisesService;
             this.categoriesService = categoriesService;
@@ -67,7 +65,7 @@
 
             if (category == null)
             {
-                return this.BadRequest(MessageConstants.CategoryWithNameDoesNotExists);
+                return this.BadRequest(string.Format(MessageConstants.CategoryWithNameDoesNotExists, exercise.CategoryName));
             }
 
             var addedExercise = this.exercisesService

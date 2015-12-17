@@ -216,7 +216,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\Base\BaseAuthorizationController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\ExercisesController.cs" />
     <Compile Include="Controllers\FitnessProgramsController.cs" />
@@ -225,9 +224,11 @@
     </Compile>
     <Compile Include="Models\Account\AccountBindingModels.cs" />
     <Compile Include="Models\Account\AccountViewModels.cs" />
+    <Compile Include="Models\Category\CategoryRequestModel.cs" />
     <Compile Include="Models\Category\CategoryResponseModel.cs" />
     <Compile Include="Models\Exercise\ExerciseRequestModel.cs" />
     <Compile Include="Models\Exercise\ExerciseResponseModel.cs" />
+    <Compile Include="Models\FitnessProgram\FitnessProgramRequestModel.cs" />
     <Compile Include="Models\FitnessProgram\FitnessProgramResponseModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
