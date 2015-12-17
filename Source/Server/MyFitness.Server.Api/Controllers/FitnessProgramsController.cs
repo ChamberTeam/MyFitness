@@ -1,6 +1,6 @@
 ﻿using AutoMapper.QueryableExtensions;
 using MyFitness.Server.Api.Controllers.Base;
-using MyFitness.Server.Api.Models.Exercise;
+using MyFitness.Server.Api.Models.FitnessProgram;
 using MyFitness.Server.Common.Constants;
 using MyFitness.Services.Contracts;
 using System;
@@ -12,28 +12,27 @@ using System.Web.Http;
 
 namespace MyFitness.Server.Api.Controllers
 {
-    
-    public class ExercisesController : BaseAuthorizationController
+    public class FitnessProgramsController : BaseAuthorizationController
     {
-        private readonly IExercisesService exercisesService;
+        private readonly IFitnessProgramsService fitnessProgramsService;
 
-        public ExercisesController(IUsersService usersService, IExercisesService exercisesService)
+        public FitnessProgramsController(IUsersService usersService, IFitnessProgramsService fitnessProgramsService)
             : base(usersService)
         {
-            this.exercisesService = exercisesService;
+            this.fitnessProgramsService = fitnessProgramsService;
         }
 
         [HttpGet]
         public IHttpActionResult GetById(int id)
         {
-            var model = this.exercisesService
+            var model = this.fitnessProgramsService
                 .GetById(id)
-                .ProjectTo<ExerciseResponseModel>()
+                .ProjectTo<FitnessProgramResponseModel>()
                 .ToList();
 
             if (model.Count == 0)
             {
-                return this.BadRequest(string.Format(MessageConstants.ExerciseWithIdDoesNotExists, id));
+                return this.BadRequest(string.Format(MessageConstants.FitnessProgramWithIdDoesNotExists, id));
             }
 
             return this.Ok(model);
@@ -42,14 +41,14 @@ namespace MyFitness.Server.Api.Controllers
         [HttpGet]
         public IHttpActionResult GetAll()
         {
-            var model = this.exercisesService
+            var model = this.fitnessProgramsService
                 .GetAll()
-                .ProjectTo<ExerciseResponseModel>()
+                .ProjectTo<FitnessProgramResponseModel>()
                 .ToList();
 
             if (model.Count == 0)
             {
-                return this.BadRequest(MessageConstants.NoExercises);
+                return this.BadRequest(MessageConstants.NoFitnessPrograms);
             }
 
             return this.Ok(model);

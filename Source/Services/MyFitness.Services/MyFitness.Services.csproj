@@ -43,8 +43,10 @@
     <Compile Include="CategoriesService.cs" />
     <Compile Include="Contracts\ICategoriesService.cs" />
     <Compile Include="Contracts\IExercisesService.cs" />
+    <Compile Include="Contracts\IFitnessProgramsService.cs" />
     <Compile Include="Contracts\IUsersService.cs" />
     <Compile Include="ExercisesService.cs" />
+    <Compile Include="FitnessProgramsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsersService.cs" />
   </ItemGroup>

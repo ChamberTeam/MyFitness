@@ -32,7 +32,7 @@ namespace MyFitness.Server.Api.Controllers
 
             if (model.Count == 0)
             {
-                return this.BadRequest(MessageConstants.CategoryWithIdDoesNotExists);
+                return this.BadRequest(string.Format(MessageConstants.CategoryWithIdDoesNotExists, id));
             }
 
             return this.Ok(model);
