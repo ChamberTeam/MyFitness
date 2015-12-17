@@ -22,6 +22,13 @@
                 .Where(c => c.Id == id);
         }
 
+        public IQueryable<Category> GetByName(string name)
+        {
+            return this.categories
+                .All()
+                .Where(c => c.Name == name);
+        }
+
         public IQueryable<Category> GetAll()
         {
             return this.categories

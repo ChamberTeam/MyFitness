@@ -1,11 +1,10 @@
 ﻿namespace MyFitness.Data.Models
 {
-    using Common;
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
+    using System.ComponentModel.DataAnnotations;
+
+    using Common;
+    using MyFitness.Common.Constants;
 
     public class FitnessProgram : IDeletableEntity
     {
@@ -18,8 +17,14 @@
 
         public int Id { get; set; }
 
+        [Required]
+        [MinLength(ValidationConstants.MinFitnessProgramNameLength)]
+        [MaxLength(ValidationConstants.MaxFitnessProgramNameLength)]
         public string Name { get; set; }
 
+        [Required]
+        [MinLength(ValidationConstants.MinFitnessProgramDescriptionLength)]
+        [MaxLength(ValidationConstants.MaxFitnessProgramDescriptionLength)]
         public string Description { get; set; }
 
         public Suitable SuitableFor { get; set; }

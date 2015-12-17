@@ -1,17 +1,17 @@
-﻿using AutoMapper.QueryableExtensions;
-using MyFitness.Server.Api.Controllers.Base;
-using MyFitness.Server.Api.Models.Category;
-using MyFitness.Server.Common.Constants;
-using MyFitness.Services.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-
-namespace MyFitness.Server.Api.Controllers
+﻿namespace MyFitness.Server.Api.Controllers
 {
+    using AutoMapper.QueryableExtensions;
+    using MyFitness.Server.Api.Controllers.Base;
+    using MyFitness.Server.Api.Models.Category;
+    using MyFitness.Server.Common.Constants;
+    using MyFitness.Services.Contracts;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Net;
+    using System.Net.Http;
+    using System.Web.Http;
+
     public class CategoriesController : BaseAuthorizationController
     {
         private readonly ICategoriesService categoriesService;

@@ -32,5 +32,20 @@ namespace MyFitness.Services
 
             return us;
         }
+
+        public Exercise Add(string name, string description, Category category)
+        {
+            var exercise = new Exercise
+            {
+                Name = name,
+                Description = description,
+                Category = category
+            };
+
+            this.exercises.Add(exercise);
+            this.exercises.SaveChanges();
+
+            return exercise;
+        }
     }
 }

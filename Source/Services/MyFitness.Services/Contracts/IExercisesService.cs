@@ -9,5 +9,7 @@
         IQueryable<Exercise> GetAll();
 
         IQueryable<Exercise> GetById(int id);
+
+        Exercise Add(string name, string description, Category category);
     }
 }

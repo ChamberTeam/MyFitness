@@ -69,6 +69,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\MyFitness.Common\MyFitness.Common.csproj">
+      <Project>{08c37363-81df-49ef-b2bf-21f9ba17688d}</Project>
+      <Name>MyFitness.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MyFitness.Data.Common\MyFitness.Data.Common.csproj">
       <Project>{dc61de5d-b22f-4baa-8c56-37dc64d0bec4}</Project>
       <Name>MyFitness.Data.Common</Name>

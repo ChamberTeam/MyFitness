@@ -1,6 +1,9 @@
 ﻿namespace MyFitness.Data.Models
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+
+    using MyFitness.Common.Constants;
     using MyFitness.Data.Common;
 
     public class Category : IDeletableEntity
@@ -16,6 +19,9 @@
 
         public int Id { get; set; }
 
+        [Required]
+        [MinLength(ValidationConstants.MinCategoryNameLength)]
+        [MaxLength(ValidationConstants.MaxCategoryNameLength)]
         public string Name { get; set; }
 
         public virtual ICollection<Exercise> Exercises

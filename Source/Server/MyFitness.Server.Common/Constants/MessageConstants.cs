@@ -10,8 +10,12 @@
 
         public const string NoCategories = "No Categories";
 
+        public const string CategoryWithNameDoesNotExists = "Category with that name {0} does not exists";
+
         public const string FitnessProgramWithIdDoesNotExists = "Fitness program with that id {0} does not exists";
 
         public const string NoFitnessPrograms = "No fitness programs";
+
+        public const string RequestCannotBeEmpty = "Request cannot be empty";
     }
 }
