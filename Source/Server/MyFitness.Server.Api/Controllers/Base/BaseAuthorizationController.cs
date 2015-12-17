@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
+using Microsoft.AspNet.Identity;
 
 namespace MyFitness.Server.Api.Controllers.Base
 {
@@ -22,12 +23,11 @@ namespace MyFitness.Server.Api.Controllers.Base
 
         private void SetCurrentUser()
         {
-            var username = this.User.Identity.Name;
-            if (username != null)
+            var id = this.User.Identity.GetUserId();
+            if (id != null)
             {
                 this.CurrentUser = this.UsersService
-                    .ByUserName(username)
-                    .FirstOrDefault();
+                    .ById(id);
             }
         }
     }

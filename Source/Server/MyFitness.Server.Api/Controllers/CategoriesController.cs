@@ -1,6 +1,6 @@
 ﻿using AutoMapper.QueryableExtensions;
 using MyFitness.Server.Api.Controllers.Base;
-using MyFitness.Server.Api.Models.Exercise;
+using MyFitness.Server.Api.Models.Category;
 using MyFitness.Server.Common.Constants;
 using MyFitness.Services.Contracts;
 using System;
@@ -12,28 +12,27 @@ using System.Web.Http;
 
 namespace MyFitness.Server.Api.Controllers
 {
-    
-    public class ExercisesController : BaseAuthorizationController
+    public class CategoriesController : BaseAuthorizationController
     {
-        private readonly IExercisesService exercisesService;
+        private readonly ICategoriesService categoriesService;
 
-        public ExercisesController(IUsersService usersService, IExercisesService exercisesService)
+        public CategoriesController(IUsersService usersService, ICategoriesService categoriesService)
             : base(usersService)
         {
-            this.exercisesService = exercisesService;
+            this.categoriesService = categoriesService;
         }
 
         [HttpGet]
         public IHttpActionResult GetById(int id)
         {
-            var model = this.exercisesService
+            var model = this.categoriesService
                 .GetById(id)
-                .ProjectTo<ExerciseResponseModel>()
+                .ProjectTo<CategoryResponseModel>()
                 .ToList();
 
             if (model.Count == 0)
             {
-                return this.BadRequest(MessageConstants.ExerciseWithIdDoesNotExists);
+                return this.BadRequest(MessageConstants.CategoryWithIdDoesNotExists);
             }
 
             return this.Ok(model);
@@ -42,14 +41,14 @@ namespace MyFitness.Server.Api.Controllers
         [HttpGet]
         public IHttpActionResult GetAll()
         {
-            var model = this.exercisesService
+            var model = this.categoriesService
                 .GetAll()
-                .ProjectTo<ExerciseResponseModel>()
+                .ProjectTo<CategoryResponseModel>()
                 .ToList();
 
             if (model.Count == 0)
             {
-                return this.BadRequest(MessageConstants.NoExercises);
+                return this.BadRequest(MessageConstants.NoCategories);
             }
 
             return this.Ok(model);

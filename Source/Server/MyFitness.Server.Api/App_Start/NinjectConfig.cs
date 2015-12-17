@@ -15,7 +15,7 @@ namespace MyFitness.Server.Api
     using Data;
     using System.Data.Entity;
     using MyFitness.Common.Constants;
-
+    using Data.Models;
     public static class NinjectConfig
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -67,6 +67,7 @@ namespace MyFitness.Server.Api
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind(typeof(IRepository<>)).To(typeof(DeletableEntityRepository<>));
+            kernel.Bind(typeof(IRepository<User>)).To(typeof(EfGenericRepository<User>));
             kernel.Bind<DbContext>().To<MyFitnessDbContext>().InRequestScope();
 
             kernel.Bind(k => k

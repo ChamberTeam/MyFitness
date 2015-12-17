@@ -9,6 +9,6 @@ namespace MyFitness.Services.Contracts
 {
     public interface IUsersService
     {
-        IQueryable<User> ByUserName(string name);
+        User ById(string id);
     }
 }
