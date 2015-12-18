@@ -9,17 +9,17 @@
 
     public class User : IdentityUser
     {
-        private ICollection<FitnessProgram> programs;
+        private ICollection<FitnessProgram> fitnessPrograms;
 
         public User()
         {
-            this.programs = new HashSet<FitnessProgram>();
+            this.fitnessPrograms = new HashSet<FitnessProgram>();
         }
 
-        public virtual ICollection<FitnessProgram> Programs
+        public virtual ICollection<FitnessProgram> FitnessPrograms
         {
-            get { return this.programs; }
-            set { this.programs = value; }
+            get { return this.fitnessPrograms; }
+            set { this.fitnessPrograms = value; }
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager, string authenticationType)

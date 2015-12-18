@@ -17,5 +17,11 @@
         public const string NoFitnessPrograms = "No fitness programs";
 
         public const string RequestCannotBeEmpty = "Request cannot be empty";
+
+        public const string InvalidUser = "Invalid user";
+
+        public const string InvalidSuitableFor = "Invalid suitable for";
+
+        public const string InvalidFitnessProgramIdOrExerciseId = "Invalid fitness program id or exercise id";
     }
 }

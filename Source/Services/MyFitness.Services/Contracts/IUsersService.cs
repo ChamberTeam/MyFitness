@@ -9,6 +9,10 @@ namespace MyFitness.Services.Contracts
 {
     public interface IUsersService
     {
-        User ById(string id);
+        User GetById(string id);
+
+        User AddFitnessProgramToUserPrograms(User user, FitnessProgram fitnessProgram);
+
+        User RemoveFitnessProgramFromUserPrograms(User user, FitnessProgram fitnessProgram);
     }
 }

@@ -17,6 +17,8 @@
             Suitable suitableFor,
             Category category);
 
-        FitnessProgram AddExerciseToFitnessProgram(Exercise exercise, FitnessProgram fitnessProgram);
+        Exercise AddExerciseToFitnessProgram(int exerciseId, int fitnessProgramId);
+
+        Exercise RemoveExerciseFromFitnessProgram(int exerciseId, int fitnessProgramId);
     }
 }

@@ -1,17 +1,16 @@
 ﻿namespace MyFitness.Server.Api.Controllers
 {
-    using System.Linq;
-    using System.Web.Http;
-
+    using AutoMapper;
     using AutoMapper.QueryableExtensions;
+    using Common.Extensions;
+    using Data.Models;
+    using Infrastructure.Validation;
+    using Models.Exercise;
     using MyFitness.Server.Api.Models.FitnessProgram;
     using MyFitness.Server.Common.Constants;
     using MyFitness.Services.Contracts;
-    using Infrastructure.Validation;
-    using AutoMapper;
-    using Common.Extensions;
-    using Data.Models;
-    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web.Http;
 
     public class FitnessProgramsController : ApiController
     {
@@ -63,6 +62,13 @@
         [ValidateModel]
         public IHttpActionResult Add(FitnessProgramRequestModel fitnessProgram)
         {
+            bool canCast = fitnessProgram.SuitableFor.CanCastToEnum<Suitable>();
+
+            if (!canCast)
+            {
+                return this.BadRequest(MessageConstants.InvalidSuitableFor);
+            }
+
             var suitableFor = fitnessProgram.SuitableFor.ToEnum<Suitable>();
             var category = this.categoriesService.GetByName(fitnessProgram.CategoryName).FirstOrDefault();
 
@@ -81,27 +87,29 @@
         [HttpPost]
         public IHttpActionResult AddExercisesToFitnessProgram(int fitnessProgramId, int exerciseId)
         {
-            var fitnessProgram = this.fitnessProgramsService
-                .GetById(fitnessProgramId)
-                .FirstOrDefault();
+            var addedExercise = this.fitnessProgramsService
+                .AddExerciseToFitnessProgram(exerciseId, fitnessProgramId);
 
-            var exercise = this.exercisesService
-                .GetById(exerciseId)
-                .FirstOrDefault();
-
-            if (fitnessProgram == null)
+            if (addedExercise == null)
             {
-                return this.BadRequest(string.Format(MessageConstants.FitnessProgramWithIdDoesNotExists, fitnessProgramId));
+                return this.BadRequest(MessageConstants.InvalidFitnessProgramIdOrExerciseId);
             }
 
-            if (exercise == null)
+            return this.Ok(Mapper.Map<ExerciseResponseModel>(addedExercise));
+        }
+        [Authorize]
+        [HttpDelete]
+        public IHttpActionResult RemoveExercisesFromFitnessProgram(int fitnessProgramId, int exerciseId)
+        {
+            var deletedExercise = this.fitnessProgramsService
+                .RemoveExerciseFromFitnessProgram(exerciseId, fitnessProgramId);
+
+            if (deletedExercise == null)
             {
-                return this.BadRequest(string.Format(MessageConstants.ExerciseWithIdDoesNotExists, exerciseId));
+                return this.BadRequest(MessageConstants.InvalidFitnessProgramIdOrExerciseId);
             }
 
-            var modifiedFitnessProgram = this.fitnessProgramsService.AddExerciseToFitnessProgram(exercise, fitnessProgram);
-
-            return this.Ok(Mapper.Map<FitnessProgramResponseModel>(modifiedFitnessProgram));
+            return this.Ok(Mapper.Map<ExerciseResponseModel>(deletedExercise));
         }
     }
 }

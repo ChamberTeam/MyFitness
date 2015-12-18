@@ -26,11 +26,9 @@ namespace MyFitness.Services
 
         public IQueryable<Exercise> GetById(int id)
         {
-            var us =  this.exercises
+            return this.exercises
                 .All()
                 .Where(e => e.Id == id);
-
-            return us;
         }
 
         public Exercise Add(string name, string description, Category category)
@@ -43,6 +41,18 @@ namespace MyFitness.Services
             };
 
             this.exercises.Add(exercise);
+            this.exercises.SaveChanges();
+
+            return exercise;
+        }
+
+        public Exercise Edit(int id, string name, string description, Category category)
+        {
+            var exercise = this.GetById(id).FirstOrDefault();
+            exercise.Name = name;
+            exercise.Description = description;
+            exercise.Category = category;
+
             this.exercises.SaveChanges();
 
             return exercise;

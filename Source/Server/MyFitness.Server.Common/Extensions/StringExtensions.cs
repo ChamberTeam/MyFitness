@@ -10,7 +10,20 @@ namespace MyFitness.Server.Common.Extensions
     {
         public static T ToEnum<T>(this string value)
         {
-            return (T)Enum.Parse(typeof(T), value, true);
+                return (T)Enum.Parse(typeof(T), value, true);
+        }
+
+        public static bool CanCastToEnum<T>(this string value)
+        {
+            try
+            {
+                var parse = (T)Enum.Parse(typeof(T), value, true);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

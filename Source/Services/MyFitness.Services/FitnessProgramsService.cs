@@ -12,10 +12,12 @@ namespace MyFitness.Services
     public class FitnessProgramsService : IFitnessProgramsService
     {
         private readonly IRepository<FitnessProgram> fitnessPrograms;
+        private IExercisesService exercisesService;
 
-        public FitnessProgramsService(IRepository<FitnessProgram> fitnessPrograms)
+        public FitnessProgramsService(IRepository<FitnessProgram> fitnessPrograms, IExercisesService exercisesService)
         {
             this.fitnessPrograms = fitnessPrograms;
+            this.exercisesService = exercisesService;
         }
 
         public IQueryable<FitnessProgram> GetById(int id)
@@ -51,13 +53,32 @@ namespace MyFitness.Services
             return fitnessProgram;
         }
 
-        public FitnessProgram AddExerciseToFitnessProgram(Exercise exercise, FitnessProgram fitnessProgram)
+        public Exercise AddExerciseToFitnessProgram(int exerciseId, int fitnessProgramId)
         {
-            fitnessProgram.Exercises.Add(exercise);
+            var fitnessProgram = this.GetById(fitnessProgramId).FirstOrDefault();
+            var exerciseToAdd = this.exercisesService.GetById(exerciseId).FirstOrDefault();
+
+            fitnessProgram.Exercises.Add(exerciseToAdd);
 
             this.fitnessPrograms.SaveChanges();
 
-            return fitnessProgram;
+            return exerciseToAdd;
+        }
+
+        public Exercise RemoveExerciseFromFitnessProgram(int exerciseId, int fitnessProgramId)
+        {
+            var fitnessProgram = this.GetById(fitnessProgramId).FirstOrDefault();
+            var exerciseToRemove = this.fitnessPrograms
+                .GetById(fitnessProgramId)
+                .Exercises
+                .Where(f => f.Id == exerciseId)
+                .FirstOrDefault();
+
+            fitnessProgram.Exercises.Remove(exerciseToRemove);
+
+            this.fitnessPrograms.SaveChanges();
+
+            return exerciseToRemove;
         }
     }
 }

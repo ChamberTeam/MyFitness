@@ -73,5 +73,22 @@
 
             return this.Ok(Mapper.Map<ExerciseResponseModel>(addedExercise));
         }
+
+        [Authorize]
+        [HttpPut]
+        [ValidateModel]
+        public IHttpActionResult Edit(EditExerciseRequestModel exercise)
+        {
+            var category = this.categoriesService.GetByName(exercise.CategoryName).FirstOrDefault();
+
+            if (category == null)
+            {
+                return this.BadRequest(string.Format(MessageConstants.CategoryWithNameDoesNotExists, exercise.CategoryName));
+            }
+
+            var editedExercise = this.exercisesService.Edit(exercise.Id, exercise.Name, exercise.Description, category);
+
+            return this.Ok(Mapper.Map<ExerciseResponseModel>(editedExercise));
+        }
     }
 }

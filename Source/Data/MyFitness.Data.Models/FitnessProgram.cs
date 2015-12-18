@@ -9,10 +9,12 @@
     public class FitnessProgram : IDeletableEntity
     {
         private ICollection<Exercise> exercises;
+        private ICollection<User> users;
 
         public FitnessProgram()
         {
             this.exercises = new HashSet<Exercise>();
+            this.users = new HashSet<User>();
         }
 
         public int Id { get; set; }
@@ -34,6 +36,12 @@
         public virtual Category Category { get; set; }
 
         public bool IsDeleted { get; set; }
+
+        public virtual ICollection<User> Users
+        {
+            get { return this.users; }
+            set { this.users = value; }
+        }
 
         public virtual ICollection<Exercise> Exercises
         {

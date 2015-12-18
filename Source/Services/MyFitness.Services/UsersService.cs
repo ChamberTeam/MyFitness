@@ -18,10 +18,28 @@ namespace MyFitness.Services
             this.users = users;
         }
 
-        public User ById(string id)
+        public User GetById(string id)
         {
             return this.users
                 .GetById(id);
+        }
+
+        public User AddFitnessProgramToUserPrograms(User user, FitnessProgram fitnessProgram)
+        {
+            user.FitnessPrograms.Add(fitnessProgram);
+
+            this.users.SaveChanges();
+
+            return user;
+        }
+
+        public User RemoveFitnessProgramFromUserPrograms(User user, FitnessProgram fitnessProgram)
+        {
+            user.FitnessPrograms.Remove(fitnessProgram);
+
+            this.users.SaveChanges();
+
+            return user;
         }
     }
 }

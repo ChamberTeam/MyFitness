@@ -66,8 +66,7 @@ namespace MyFitness.Server.Api
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind(typeof(IRepository<>)).To(typeof(DeletableEntityRepository<>));
-            kernel.Bind(typeof(IRepository<User>)).To(typeof(EfGenericRepository<User>));
+            kernel.Bind(typeof(IRepository<>)).To(typeof(EfGenericRepository<>));
             kernel.Bind<DbContext>().To<MyFitnessDbContext>().InRequestScope();
 
             kernel.Bind(k => k
