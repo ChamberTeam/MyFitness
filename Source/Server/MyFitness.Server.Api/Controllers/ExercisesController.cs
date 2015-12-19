@@ -30,9 +30,9 @@
             var model = this.exercisesService
                 .GetById(id)
                 .ProjectTo<ExerciseResponseModel>()
-                .ToList();
+                .FirstOrDefault();
 
-            if (model.Count == 0)
+            if (model == null)
             {
                 return this.BadRequest(string.Format(MessageConstants.ExerciseWithIdDoesNotExists, id));
             }

@@ -98,11 +98,15 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Constants\ServerUrlConstants.cs" />
     <Compile Include="Helpers\DelegateCommand.cs" />
+    <Compile Include="Helpers\HttpClientHelper.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Exercise.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ExercisesService.cs" />
     <Compile Include="ViewModels\FitnessProgramsViewModel.cs" />
     <Compile Include="ViewModels\FitnessProgramsContentViewModel.cs" />
     <Compile Include="ViewModels\IContentViewModel.cs" />

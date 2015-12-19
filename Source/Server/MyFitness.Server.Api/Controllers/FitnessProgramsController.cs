@@ -31,9 +31,9 @@
             var model = this.fitnessProgramsService
                 .GetById(id)
                 .ProjectTo<FitnessProgramResponseModel>()
-                .ToList();
+                .FirstOrDefault();
 
-            if (model.Count == 0)
+            if (model == null)
             {
                 return this.BadRequest(string.Format(MessageConstants.FitnessProgramWithIdDoesNotExists, id));
             }

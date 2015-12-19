@@ -25,9 +25,9 @@
             var model = this.categoriesService
                 .GetById(id)
                 .ProjectTo<CategoryResponseModel>()
-                .ToList();
+                .FirstOrDefault();
 
-            if (model.Count == 0)
+            if (model == null)
             {
                 return this.BadRequest(string.Format(MessageConstants.CategoryWithIdDoesNotExists, id));
             }
