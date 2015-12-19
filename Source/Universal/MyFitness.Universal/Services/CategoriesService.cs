@@ -1,12 +1,14 @@
-﻿using MyFitness.Universal.Helpers;
+﻿using MyFitness.Universal.Constants;
+using MyFitness.Universal.Helpers;
 using MyFitness.Universal.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Web.Http;
+using Windows.Web.Http.Headers;
 
 namespace MyFitness.Universal.Services
 {
@@ -34,5 +36,15 @@ namespace MyFitness.Universal.Services
             return category;
         }
 
+        public async void Add(string token, string name)
+        {
+            var category = new HttpFormUrlEncodedContent(new[]
+            {
+                new KeyValuePair<string, string>("Name", name),
+            });
+
+            this.HttpClient.DefaultRequestHeaders.Authorization = new HttpCredentialsHeaderValue("Bearer", token);
+            var response = await this.HttpClient.PostAsync(new Uri(ServerUrlConstants.baseUrl + "exercises"), category);
+        }
     }
 }

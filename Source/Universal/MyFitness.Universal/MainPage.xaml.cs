@@ -1,4 +1,5 @@
-﻿using MyFitness.Universal.ViewModels;
+﻿using MyFitness.Universal.Services;
+using MyFitness.Universal.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,6 +29,15 @@ namespace MyFitness.Universal
             this.InitializeComponent();
 
             this.DataContext = new MainPageViewModel();
+            Test();
         }
+
+        public void Test()
+        {
+            var user = new UsersService();
+            var fitness = new FitnessProgramsService();
+            user.LoginUser("PROBA", "123456");
+        }
+
     }
 }

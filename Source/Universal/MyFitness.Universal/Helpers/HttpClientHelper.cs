@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
+using Windows.Web.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,7 +14,6 @@ namespace MyFitness.Universal.Helpers
         public HttpClientHelper()
         {
             this.HttpClient = new HttpClient();
-            this.HttpClient.BaseAddress = new Uri(ServerUrlConstants.baseUrl);
         }
 
         public HttpClientHelper(HttpClient httpClient)
@@ -26,7 +25,8 @@ namespace MyFitness.Universal.Helpers
 
         private async Task<string> GetData(string url)
         {
-            var response = await this.HttpClient.GetAsync(url);
+            var uri = new Uri(ServerUrlConstants.baseUrl + url);
+            var response = await this.HttpClient.GetAsync(uri);
 
             var data = await response.Content.ReadAsStringAsync();
 
