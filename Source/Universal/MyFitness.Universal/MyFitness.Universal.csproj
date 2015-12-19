@@ -103,14 +103,13 @@
     <Compile Include="Helpers\DelegateCommand.cs" />
     <Compile Include="Helpers\HttpClientHelper.cs" />
     <Compile Include="Helpers\SqlLiteSetup.cs" />
-    <Compile Include="MainPage.xaml.cs">
+    <Compile Include="Models\UserToken.cs" />
+    <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\Exercise.cs" />
-    <Compile Include="Models\FitnessProgram.cs" />
-    <Compile Include="Models\User.cs" />
-    <Compile Include="Models\UserToken.cs" />
+    <Compile Include="Pages\Register.xaml.cs">
+      <DependentUpon>Register.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CategoriesService.cs" />
     <Compile Include="Services\ExercisesService.cs" />
@@ -122,6 +121,7 @@
     <Compile Include="ViewModels\ExerciseViewModel.cs" />
     <Compile Include="ViewModels\FitnessProgramsViewModel.cs" />
     <Compile Include="ViewModels\FitnessProgramsContentViewModel.cs" />
+    <Compile Include="ViewModels\FitnessProgramViewModel.cs" />
     <Compile Include="ViewModels\IContentViewModel.cs" />
     <Compile Include="ViewModels\IPageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
@@ -149,9 +149,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Pages\MainPage.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Register.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

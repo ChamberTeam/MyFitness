@@ -18,6 +18,10 @@ namespace MyFitness.Universal.ViewModels
             this.sqlLite = new SqlLiteSetup();
         }
 
+        public string UserName { get; set; }
+
+        public IEnumerable<FitnessProgramViewModel> FitnessPrograms { get; set; }
+
         public async Task<int> InsertUserAsync(UserToken user)
         {
             if (!File.Exists("db.MyFitness"))

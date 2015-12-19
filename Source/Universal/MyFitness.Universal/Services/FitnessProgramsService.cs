@@ -6,6 +6,7 @@
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using ViewModels;
     using Windows.Web.Http;
     using Windows.Web.Http.Headers;
     public class FitnessProgramsService : HttpClientHelper
@@ -20,15 +21,15 @@
         {
         }
 
-        public async Task<IEnumerable<FitnessProgram>> GetAll()
+        public async Task<IEnumerable<FitnessProgramViewModel>> GetAll()
         {
-            var fitnessPrograms = await this.GetCollection<FitnessProgram>("fitnessPrograms");
+            var fitnessPrograms = await this.GetCollection<FitnessProgramViewModel>("fitnessPrograms");
             return fitnessPrograms;
         }
 
-        public async Task<FitnessProgram> GetById(int id)
+        public async Task<FitnessProgramViewModel> GetById(int id)
         {
-            var fitnessProgram = await this.Get<FitnessProgram>($"fitnessPrograms/{id}");
+            var fitnessProgram = await this.Get<FitnessProgramViewModel>($"fitnessPrograms/{id}");
             return fitnessProgram;
         }
 
@@ -49,7 +50,6 @@
         {
             this.HttpClient.DefaultRequestHeaders.Authorization = new HttpCredentialsHeaderValue("Bearer", token);
             var response = await this.HttpClient.PostAsync(new Uri(ServerUrlConstants.baseUrl + $"fitnessPrograms?exerciseId{exerciseId}&fitnessProgramId{fitnessProgramId}"), null);
-            int b = 5;
         }
     }
 }

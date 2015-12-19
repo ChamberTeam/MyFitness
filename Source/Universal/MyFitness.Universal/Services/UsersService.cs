@@ -25,15 +25,15 @@
             this.userViewModel = userViewModel;
         }
 
-        public async Task<IEnumerable<User>> GetAll()
+        public async Task<IEnumerable<UserViewModel>> GetAll()
         {
-            var users = await this.GetCollection<User>("users");
+            var users = await this.GetCollection<UserViewModel>("users");
             return users;
         }
 
-        public async Task<User> GetById(string id)
+        public async Task<UserViewModel> GetById(string id)
         {
-            var user = await this.Get<User>($"users/{id}");
+            var user = await this.Get<UserViewModel>($"users/{id}");
             return user;
         }
 

@@ -16,7 +16,7 @@ namespace MyFitness.Universal.ViewModels
         {
             get
             {
-                if (exercises == null)
+                if (this.exercises == null)
                 {
                     this.exercises = new ObservableCollection<ExerciseViewModel>();
                 }
@@ -25,7 +25,7 @@ namespace MyFitness.Universal.ViewModels
             }
             set
             {
-                if (exercises == null)
+                if (this.exercises == null)
                 {
                     this.exercises = new ObservableCollection<ExerciseViewModel>();
                 }

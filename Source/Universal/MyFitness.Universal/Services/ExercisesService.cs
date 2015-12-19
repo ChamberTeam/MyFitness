@@ -1,6 +1,7 @@
 ﻿using MyFitness.Universal.Constants;
 using MyFitness.Universal.Helpers;
 using MyFitness.Universal.Models;
+using MyFitness.Universal.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -25,15 +26,15 @@ namespace MyFitness.Universal.Services
         {
         }
 
-        public async Task<IEnumerable<Exercise>> GetAll()
+        public async Task<IEnumerable<ExerciseViewModel>> GetAll()
         {
-            var exercises = await this.GetCollection<Exercise>("exercises");
+            var exercises = await this.GetCollection<ExerciseViewModel>("exercises");
             return exercises;
         }
 
-        public async Task<Exercise> GetById(int id)
+        public async Task<ExerciseViewModel> GetById(int id)
         {
-            var exercise = await this.Get<Exercise>($"exercises/{id}");
+            var exercise = await this.Get<ExerciseViewModel>($"exercises/{id}");
             return exercise;
         }
 
