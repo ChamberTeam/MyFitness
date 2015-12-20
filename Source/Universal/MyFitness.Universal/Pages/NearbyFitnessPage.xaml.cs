@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -22,9 +23,21 @@ namespace MyFitness.Universal.Pages
     /// </summary>
     public sealed partial class NearbyFitnessPage : Page
     {
+        private Geolocator geolocator;
+
         public NearbyFitnessPage()
         {
             this.InitializeComponent();
+
+            this.geolocator = new Geolocator();
+
+            this.InitGeoLocation();
+        }
+
+        private async void InitGeoLocation()
+        {
+            var accessStatus = await Geolocator.RequestAccessAsync();
+            var geoposition = await geolocator.GetGeopositionAsync();
         }
     }
 }
