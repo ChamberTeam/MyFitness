@@ -14,6 +14,12 @@ namespace MyFitness.Universal.ViewModels
         private ObservableCollection<CategoryViewModel> categories;
         private CategoriesService categoriesService;
 
+        public CategoriesViewModel()
+        {
+            this.categoriesService = new CategoriesService();
+            this.LoadAllCategories();
+        }
+
         public IEnumerable<CategoryViewModel> Categories
         {
             get

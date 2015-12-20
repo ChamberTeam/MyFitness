@@ -11,6 +11,7 @@ namespace MyFitness.Universal.ViewModels
         public AddNewProgramPageViewModel(IContentViewModel contentViewModel)
         {
             this.ContentViewModel = contentViewModel;
+            this.Categories = new CategoriesViewModel();
         }
 
         public string Title
@@ -20,6 +21,8 @@ namespace MyFitness.Universal.ViewModels
                 return "Add new Program Page";
             }
         }
+
+        public CategoriesViewModel Categories { get; set; }
 
         public IContentViewModel ContentViewModel { get; set; }
     }
