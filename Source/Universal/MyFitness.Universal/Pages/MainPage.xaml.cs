@@ -39,7 +39,7 @@ namespace MyFitness.Universal.Pages
             }
         }
 
-       private async void IsUserLogged()
+        private async void IsUserLogged()
         {
             var user = await this.MainPageViewModel.UserViewModel.GetUserAsync();
             if (user != null)
