@@ -1,4 +1,5 @@
 ﻿using MyFitness.Universal.Extensions;
+using MyFitness.Universal.Services;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
@@ -6,6 +7,14 @@ namespace MyFitness.Universal.ViewModels
 {
     public class FitnessProgramsViewModel
     {
+        private FitnessProgramsService fitnessProgramsService;
+
+        public FitnessProgramsViewModel()
+        {
+            this.fitnessProgramsService = new FitnessProgramsService();
+            this.LoadFitnessPrograms();
+        }
+
         private ObservableCollection<FitnessProgramViewModel> fitnessPrograms;
 
         public IEnumerable<FitnessProgramViewModel> FitnessPrograms
@@ -29,6 +38,11 @@ namespace MyFitness.Universal.ViewModels
                 this.fitnessPrograms.Clear();
                 value.ForEach(this.fitnessPrograms.Add);
             }
+        }
+
+        private async void LoadFitnessPrograms()
+        {
+            FitnessPrograms = await fitnessProgramsService.GetAll();
         }
     }
 }

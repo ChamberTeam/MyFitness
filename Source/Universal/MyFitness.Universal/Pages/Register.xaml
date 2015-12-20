@@ -8,24 +8,10 @@
     mc:Ignorable="d">
     
     <Page.Resources>
-        <Style x:Key="registerBtnStyle" TargetType="Button">
-            <Setter Property="HorizontalAlignment" Value="Stretch" />
-            <Setter Property="VerticalAlignment" Value="Stretch" />
-            <Setter Property="Grid.Row" Value="4" />
-            <Setter Property="Grid.Column" Value="0" />
-            <Setter Property="Grid.ColumnSpan" Value="2" />
-            <Setter Property="Background" Value="Green" />
-        </Style>
-        <Style TargetType="TextBox">
-            <Setter Property="FontSize" Value="25" />
-            <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="Width" Value="220" />
-            <Setter Property="Background" Value="{ThemeResource ApplicationPageBackgroundThemeBrush}" />
-        </Style>
+
     </Page.Resources>
 
-    <Grid Background="RoyalBlue">
+    <Grid Background="LightSkyBlue">
         <Grid
             Width="250"
               Height="550">
@@ -36,29 +22,37 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <TextBox Grid.Row="0"
+            <TextBox Name="email"
+                     Grid.Row="0"
+                     Grid.Column="1"
+                     PlaceholderText="Email"
+                     Style="{StaticResource textBoxCommonStyle}">
+            </TextBox>
+        <TextBox Name="userName"
+                 Grid.Row="1"
                  Grid.Column="1"
-                 PlaceholderText="Email">
+                 PlaceholderText="Username"
+                 Style="{StaticResource textBoxCommonStyle}">
 
         </TextBox>
-        <TextBox Grid.Row="1"
+        <PasswordBox Name="password"
+                 Grid.Row="2"
                  Grid.Column="1"
-                 PlaceholderText="Username">
+                 PlaceholderText="Password"
+                Style="{StaticResource passwordBoxCommonStyle}">
 
-        </TextBox>
-        <TextBox Grid.Row="2"
+        </PasswordBox>
+        <PasswordBox Name="confirmPassword"
+                 Grid.Row="3"
                  Grid.Column="1"
-                 PlaceholderText="Password">
+                 PlaceholderText="Confirm Password"
+                Style="{StaticResource passwordBoxCommonStyle}">
 
-        </TextBox>
-        <TextBox Grid.Row="3"
-                 Grid.Column="1"
-                 PlaceholderText="Confirm Password">
-            
-        </TextBox>
-        <Button Content="Register"
-                Style="{StaticResource registerBtnStyle}">
-        </Button>
+            </PasswordBox>
+            <Button Content="Register"
+                Style="{StaticResource BtnCommonStyle}"
+                    Tapped="RegisterTapped">
+            </Button>
     </Grid>
     </Grid>
 </Page>

@@ -23,16 +23,41 @@ namespace MyFitness.Universal.Pages
         {
             this.InitializeComponent();
 
-            this.DataContext = new MainPageViewModel();
-            Test();
+            this.MainPageViewModel = new MainPageViewModel();
+            this.IsUserLogged();
         }
 
-        public void Test()
+        public MainPageViewModel MainPageViewModel
         {
-            var user = new UsersService();
-            var fitness = new FitnessProgramsService();
-            user.LoginUser("PROBA", "123456");
+            get
+            {
+                return this.DataContext as MainPageViewModel;
+            }
+            set
+            {
+                this.DataContext = value;
+            }
         }
 
+       private async void IsUserLogged()
+        {
+            var user = await this.MainPageViewModel.UserViewModel.GetUserAsync();
+            if (user != null)
+            {
+                this.loginBtn.Visibility = Visibility.Collapsed;
+                this.registerBtn.Visibility = Visibility.Collapsed;
+                this.favouriteBtn.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void OnRegisterBtnTapped(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Register), null);
+        }
+
+        private void OnloginBtnTapped(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Login), null);
+        }
     }
 }

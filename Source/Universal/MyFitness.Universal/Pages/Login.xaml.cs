@@ -14,21 +14,26 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
+
 namespace MyFitness.Universal.Pages
 {
-    public sealed partial class Register : Page
+    /// <summary>
+    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// </summary>
+    public sealed partial class Login : Page
     {
-        public Register()
+        public Login()
         {
             this.InitializeComponent();
-            this.ViewModel = new RegisterPageViewModel();
+            this.ViewModel = new LoginPageViewModel();
         }
 
-        public RegisterPageViewModel ViewModel
+        public LoginPageViewModel ViewModel
         {
             get
             {
-                return this.DataContext as RegisterPageViewModel;
+                return this.DataContext as LoginPageViewModel;
             }
             set
             {
@@ -36,15 +41,10 @@ namespace MyFitness.Universal.Pages
             }
         }
 
-        private void RegisterTapped(object sender, TappedRoutedEventArgs e)
+        private async void LoginTapped(object sender, TappedRoutedEventArgs e)
         {
-            this.ViewModel.RegisterUser(
-                this.userName.Text,
-                this.email.Text,
-                this.password.Password,
-                this.confirmPassword.Password);
-
-            this.Frame.Navigate(typeof(MainPage), null);
+            var res = await this.ViewModel.LoginUser(this.userName.Text, this.password.Password);
+            var b = 5;
         }
     }
 }

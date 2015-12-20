@@ -11,18 +11,14 @@
     using ViewModels;
     public class UsersService : HttpClientHelper
     {
-        private readonly UserViewModel userViewModel;
-
         public UsersService()
-            : base()
+            :base()
         {
-            this.userViewModel = new UserViewModel();
         }
 
-        public UsersService(HttpClient httpClient, UserViewModel userViewModel)
+        public UsersService(HttpClient httpClient)
            : base(httpClient)
         {
-            this.userViewModel = userViewModel;
         }
 
         public async Task<IEnumerable<UserViewModel>> GetAll()
@@ -37,12 +33,12 @@
             return user;
         }
 
-        public async void RegisterUser(string UserName, string Email, string password, string confirmPassword)
+        public async void RegisterUser(string userName, string email, string password, string confirmPassword)
         {
             var user = new HttpFormUrlEncodedContent(new[]
             {
-                new KeyValuePair<string, string>("Email", Email),
-                new KeyValuePair<string, string>("UserName", UserName),
+                new KeyValuePair<string, string>("Email", email),
+                new KeyValuePair<string, string>("UserName", userName),
                 new KeyValuePair<string, string>("Password", password),
                 new KeyValuePair<string, string>("ConfirmPassword", confirmPassword)
             });
@@ -50,13 +46,11 @@
             var response = await this.HttpClient.PostAsync(new Uri(ServerUrlConstants.baseUrl + "Account/Register"), user);
         }
 
-        public async void LoginUser(string UserName, string password)
+        public async Task<int> LoginUser(string userName, string password)
         {
-            UserName = "PROBA";
-            password = "123456";
             var loginInfo = new HttpFormUrlEncodedContent(new[]
             {
-                new KeyValuePair<string, string>("UserName", UserName),
+                new KeyValuePair<string, string>("UserName", userName),
                 new KeyValuePair<string, string>("grant_type", "password"),
                 new KeyValuePair<string, string>("Password", password)
             });
@@ -64,7 +58,10 @@
             var response = await this.HttpClient.PostAsync(new Uri(ServerUrlConstants.baseUrl + "Token"), loginInfo);
             var content = await response.Content.ReadAsStringAsync();
             var user = JsonConvert.DeserializeObject<UserToken>(content);
-            var added = await userViewModel.InsertUserAsync(user);
+            var userViewModel = new UserViewModel();
+            var addedUser = await userViewModel.InsertUserAsync(user);
+
+            return addedUser;
         }
     }
 }

@@ -6,7 +6,23 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Page.Resources>
+        <DataTemplate x:Key="fitnessProgramsTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Name}"
+                           Foreground="Yellow"
+                           HorizontalAlignment="Left"
+                           Width="200">
+                </TextBlock>
+                <TextBlock HorizontalAlignment="Right"
+                    Text="{Binding SuitableFor}"
+                            Width="100">
+                </TextBlock>
 
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -16,17 +32,107 @@
         <Grid Name="panelTitle" 
               Background="Yellow"              
               Grid.Row="0">
-            <TextBlock Text="{Binding Title}"
-                       VerticalAlignment="Center"
-                   Style="{StaticResource TitleStyle}"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button Content="Favourite programs"
+                    Name="favouriteBtn"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="4"
+                    FontSize="15"
+                    Visibility="Collapsed"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center"/>
+            <Button Name="registerBtn"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    HorizontalAlignment="Stretch"
+                    Background="blue"
+                    VerticalAlignment="Center"
+                    Content="Register"
+                    Tapped="OnRegisterBtnTapped"/>
+            <Button Name="loginBtn"
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    Grid.ColumnSpan="2"
+                    HorizontalAlignment="Stretch"
+                    Background="blue"
+                    VerticalAlignment="Center"
+                    Content="Login"
+                    Tapped="OnloginBtnTapped" />
+            <Button Grid.Column="0"
+                    Grid.Row="1"
+                    Content="FitnessPrograms"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Stretch"/>
+            <Button Grid.Column="1"
+                    Grid.Row="1"
+                    Content="FitnessPrograms"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Stretch"/>
+            <Button Grid.Column="2"
+                    Grid.Row="1"
+                    Content="FitnessPrograms"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Stretch"/>
+       
         </Grid>
         <Grid Name="panelContent" 
-              Background="Purple"
-              Grid.Row="1">
+              Grid.Row="1"
+              Background="LightSkyBlue">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35" />
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="20"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0"
+                  Grid.Column="1"
+                  Grid.ColumnSpan="2"
+                  Background="GreenYellow">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Program Name"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Stretch"
+                       FontSize="20"
+                       Grid.Column="0">
+                </TextBlock>
+                <TextBlock Text="Suitable For"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Stretch"
+                       FontSize="20"
+                           Grid.Column="1">
+                </TextBlock>
+            </Grid>
+            <Grid Grid.Row="1"
+                  Grid.Column="1"
+                  Grid.ColumnSpan="2">
+                <ListBox Background="SaddleBrown"
+                     ItemsSource="{Binding Path=FitnessProgramsViewModel.FitnessPrograms}"
+                     ItemTemplate="{StaticResource fitnessProgramsTemplate}">
+            </ListBox>
+            </Grid>
         </Grid>
         <Grid Name="panelAdd" 
               Background="Green"
               Grid.Row="2">
+
             <Button HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
                     Content="Add new program ??"/>
