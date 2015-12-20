@@ -18,5 +18,6 @@
                    FontFamily="Georgia"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"/>
+        <WebView x:Name="webBrowser"/>
     </Grid>
 </Page>
