@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 
 namespace MyFitness.Universal.ViewModels
 {
-    public class FitnessProgramsViewModel
+    public class FitnessProgramsViewModel : IContentViewModel
     {
         private FitnessProgramsService fitnessProgramsService;
 
