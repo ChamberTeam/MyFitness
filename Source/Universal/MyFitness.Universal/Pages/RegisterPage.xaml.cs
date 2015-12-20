@@ -16,9 +16,9 @@ using Windows.UI.Xaml.Navigation;
 
 namespace MyFitness.Universal.Pages
 {
-    public sealed partial class Register : Page
+    public sealed partial class RegisterPage : Page
     {
-        public Register()
+        public RegisterPage()
         {
             this.InitializeComponent();
             this.ViewModel = new RegisterPageViewModel();
@@ -44,7 +44,10 @@ namespace MyFitness.Universal.Pages
                 this.password.Password,
                 this.confirmPassword.Password);
 
-            this.Frame.Navigate(typeof(MainPage), null);
+            this.Frame.Navigate(typeof(HomePage), null);
+
+            // Implement how to go back to previous page?
+            // this.Frame.GoBack();
         }
     }
 }

@@ -40,12 +40,12 @@
 
         private void OnRegisterBtnTapped(object sender, TappedRoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(Register), null);
+            this.Frame.Navigate(typeof(RegisterPage), null);
         }
 
         private void OnloginBtnTapped(object sender, TappedRoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(Login), null);
+            this.Frame.Navigate(typeof(LoginPage), null);
         }
     }
 }
