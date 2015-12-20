@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyFitness.Universal.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +26,19 @@ namespace MyFitness.Universal.Pages
         public FitnessProgramsPage()
         {
             this.InitializeComponent();
+            this.FitnessPageViewModel = new FitnessProgramPageViewModel(new FitnessProgramsViewModel());
+        }
+
+        public FitnessProgramPageViewModel FitnessPageViewModel
+        {
+            get
+            {
+                return this.DataContext as FitnessProgramPageViewModel;
+            }
+            set
+            {
+                this.DataContext = value;
+            }
         }
     }
 }

@@ -8,7 +8,103 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="Displaying list of available fitness programs.."
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="CategoryName"
+                   Grid.Row="0"
+                   Grid.Column="0"/>
+        <TextBlock Text="Description"
+                   Grid.Row="0"
+                   Grid.Column="1"/>
+        <TextBlock Text="CategoryName"
+                   Grid.Row="0"
+                   Grid.Column="2"/>
+    </Grid>
+    <!-- <Page.Resources>
+        <DataTemplate x:Key="fitnessProgramsTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Name}"
+                           Foreground="Yellow"
+                           HorizontalAlignment="Left"
+                           Width="200">
+                </TextBlock>
+                <TextBlock HorizontalAlignment="Right"
+                    Text="{Binding SuitableFor}"
+                            Width="100">
+                </TextBlock>
+
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid Name="panelContent" 
+              Grid.Row="1"
+              Background="LightSkyBlue">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35" />
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="20"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0"
+                  Grid.Column="1"
+                  Grid.ColumnSpan="2"
+                  Background="GreenYellow">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Program Name"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Stretch"
+                       FontSize="20"
+                       Grid.Column="0">
+                </TextBlock>
+                <TextBlock Text="Suitable For"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Stretch"
+                       FontSize="20"
+                           Grid.Column="1">
+                </TextBlock>
+            </Grid>
+            <Grid Grid.Row="1"
+                  Grid.Column="1"
+                  Grid.ColumnSpan="2">
+                <ListBox Background="SaddleBrown"
+                     ItemsSource="{Binding Path=FitnessProgramsViewModel.FitnessPrograms}"
+                     ItemTemplate="{StaticResource fitnessProgramsTemplate}">
+                </ListBox>
+            </Grid>
+        </Grid>
+        <Grid Name="panelAdd" 
+              Background="Green"
+              Grid.Row="2">
+
+            <Button HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Content="Add new program ??"/>
+        </Grid>
+    </Grid>
+    -->
+    <!-- <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+         <TextBlock Text="Displaying list of available fitness programs.."
                    TextAlignment="Center"
                    FontSize="24"
                    TextWrapping="WrapWholeWords"
@@ -18,5 +114,7 @@
                    FontFamily="Georgia"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"/>
-    </Grid>
+     
+        
+    </Grid>  -->
 </Page>
