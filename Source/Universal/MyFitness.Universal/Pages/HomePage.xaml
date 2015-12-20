@@ -8,6 +8,14 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
         <TextBlock Text="Welcome to MyFitness App!"
                    TextAlignment="Center"
                    FontSize="24"
@@ -17,6 +25,27 @@
                    FontWeight="Bold"
                    FontFamily="Georgia"
                    HorizontalAlignment="Center"
-                   VerticalAlignment="Center"/>
+                   VerticalAlignment="Center"
+                   Grid.Row="0"
+                   Grid.ColumnSpan="2"/>
+        
+        
+        <Button Name="registerBtn"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    HorizontalAlignment="Center"
+                    Width="100"
+                    Background="LightGray"                    
+                    VerticalAlignment="Center"
+                    Content="Register"
+                    Tapped="OnRegisterBtnTapped"/>
+        <Button Name="loginBtn"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    HorizontalAlignment="Stretch"
+                    Background="blue"
+                    VerticalAlignment="Center"
+                    Content="Login"
+                    Tapped="OnloginBtnTapped" />
     </Grid>
 </Page>
