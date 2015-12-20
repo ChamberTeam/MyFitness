@@ -14,7 +14,9 @@
                    CompactPaneLength="50"
                    OpenPaneLength="200">
             <SplitView.Pane>
-                <StackPanel Background="LightGray">
+                <StackPanel Background="LightGray"
+                            ManipulationMode="TranslateX"
+                            ManipulationCompleted="OnSplitViewPaneManipulationCompleted">
                     <Button x:Name="showPaneBtn" Content="&#xE700;" 
                             Style="{StaticResource MenuBtnStyle}" Click="OnShowPaneBtnClick" VerticalAlignment="Top" BorderThickness="0"/>
                     <StackPanel Orientation="Horizontal">
@@ -54,7 +56,17 @@
                 </StackPanel>
             </SplitView.Pane>
             <SplitView.Content>
-                <Frame Name="appShellFrame" />
+                <Grid>
+                    <Frame Name="appShellFrame" />
+                    <Grid ManipulationMode="TranslateX"
+                        ManipulationCompleted="OnSplitViewOpenerManipulationCompleted"
+                        Width="200"
+                        Background="Transparent"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Stretch">
+                    </Grid>
+                </Grid>
+
             </SplitView.Content>
         </SplitView>
     </Grid>

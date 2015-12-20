@@ -3,7 +3,7 @@
     using MyFitness.Universal.Pages;
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
-
+    using Windows.UI.Xaml.Input;
     public sealed partial class AppShell : Page
     {
         public AppShell()
@@ -57,6 +57,22 @@
         private void OnNearByBtnClick(object sender, RoutedEventArgs e)
         {
             this.AppFrame.Navigate(typeof(NearbyFitnessPage));
+        }
+
+        private void OnSplitViewOpenerManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
+        {
+            if (e.Cumulative.Translation.X > 50)
+            {
+                SplitViewMenu.IsPaneOpen = true;
+            }
+        }
+
+        private void OnSplitViewPaneManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
+        {
+            if (e.Cumulative.Translation.X < -50)
+            {
+                SplitViewMenu.IsPaneOpen = false;
+            }
         }
     }
 }
