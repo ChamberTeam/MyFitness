@@ -7,10 +7,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/background.jpg" Stretch="UniformToFill" Opacity="0.7"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -18,9 +21,9 @@
         </Grid.ColumnDefinitions>
         <TextBlock Text="Welcome to MyFitness App!"
                    TextAlignment="Center"
-                   FontSize="24"
+                   FontSize="42"
                    TextWrapping="WrapWholeWords"
-                   Foreground="Green"
+                   Foreground="White"                   
                    FontStyle="Italic"
                    FontWeight="Bold"
                    FontFamily="Georgia"
@@ -28,24 +31,19 @@
                    VerticalAlignment="Center"
                    Grid.Row="0"
                    Grid.ColumnSpan="2"/>
-        
+     
         
         <Button Name="registerBtn"
                     Grid.Row="1"
                     Grid.Column="0"
-                    HorizontalAlignment="Center"
-                    Width="100"
-                    Background="LightGray"                    
-                    VerticalAlignment="Center"
                     Content="Register"
+                    Style="{StaticResource BasicBtnStyle}"
                     Tapped="OnRegisterBtnTapped"/>
         <Button Name="loginBtn"
                     Grid.Row="1"
                     Grid.Column="1"
-                    HorizontalAlignment="Stretch"
-                    Background="blue"
-                    VerticalAlignment="Center"
                     Content="Login"
+                    Style="{StaticResource BasicBtnStyle}"
                     Tapped="OnloginBtnTapped" />
     </Grid>
 </Page>
