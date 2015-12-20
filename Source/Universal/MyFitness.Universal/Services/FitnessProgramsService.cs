@@ -3,6 +3,7 @@
     using Constants;
     using Models;
     using MyFitness.Universal.Helpers;
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -33,17 +34,21 @@
             return fitnessProgram;
         }
 
-        public async void Add(string token, string name, string description, string suitableFor)
+        public async Task<FitnessProgramViewModel> Add(string token, string name, string description, string suitableFor, string categoryName)
         {
             var fitnessProgram = new HttpFormUrlEncodedContent(new[]
             {
                 new KeyValuePair<string, string>("Name", name),
                 new KeyValuePair<string, string>("Description", description),
-                new KeyValuePair<string, string>("SuitableFor", suitableFor)
+                new KeyValuePair<string, string>("SuitableFor", suitableFor),
+                new KeyValuePair<string, string>("CategoryName", categoryName)
             });
 
             this.HttpClient.DefaultRequestHeaders.Authorization = new HttpCredentialsHeaderValue("Bearer", token);
             var response = await this.HttpClient.PostAsync(new Uri(ServerUrlConstants.baseUrl + "fitnessPrograms"), fitnessProgram);
+            var content = await response.Content.ReadAsStringAsync();
+            var addedProgram = JsonConvert.DeserializeObject<FitnessProgramViewModel>(content);
+            return addedProgram;
         }
 
         public async void AddExerciseToProgram(string token, int exerciseId, int fitnessProgramId)

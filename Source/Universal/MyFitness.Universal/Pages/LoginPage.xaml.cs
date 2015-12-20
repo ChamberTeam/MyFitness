@@ -1,4 +1,5 @@
-﻿using MyFitness.Universal.ViewModels;
+﻿using MyFitness.Universal.Services;
+using MyFitness.Universal.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -44,7 +45,11 @@ namespace MyFitness.Universal.Pages
         private async void LoginTapped(object sender, TappedRoutedEventArgs e)
         {
             var res = await this.ViewModel.LoginUser(this.userName.Text, this.password.Password);
-            var b = 5;
+            var user = new UserViewModel();
+            var resa = await user.GetUserAsync();
+            var us = new FitnessProgramsService();
+            us.Add(resa.Token,
+                "NewCategory", "DEscriptiondad", "Novice", "WeightLoss");
         }
     }
 }
