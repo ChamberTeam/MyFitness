@@ -8,21 +8,8 @@
     mc:Ignorable="d">
 
     <Page.Resources>
-        <Style x:Key="ItemNameStyle" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="TextAlignment" Value="Left"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Foreground" Value="Black"/>            
-        </Style>
-        <Style x:Key="ItemContentStyle" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="TextAlignment" Value="Left"/>
-            <Setter Property="TextWrapping" Value="WrapWholeWords"/>
-            <Setter Property="Foreground" Value="Black"/>
-        </Style>
-        
         <DataTemplate x:Key="fitnessProgramsTemplate">
-            <Grid>
+            <Grid Background="LightGray">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
@@ -30,9 +17,9 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="100"/>
                     <ColumnDefinition Width="5"/>
-                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="200"/>
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Text="Name"
@@ -74,10 +61,11 @@
         </DataTemplate>
     </Page.Resources>
     
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ListBox Foreground="AliceBlue" ItemsSource="{Binding Path=ContentViewModel.FitnessPrograms}"
+    <StackPanel>
+        <TextBlock Text="Fitness Programs" Style="{StaticResource TitleStyle}"/>
+        <ListBox Background="Transparent" ItemsSource="{Binding Path=ContentViewModel.FitnessPrograms}"
             ItemTemplate="{StaticResource fitnessProgramsTemplate}"/>
-    </Grid>
+    </StackPanel>
     <!-- <Page.Resources>
         <DataTemplate x:Key="fitnessProgramsTemplate">
             <StackPanel Orientation="Horizontal">
