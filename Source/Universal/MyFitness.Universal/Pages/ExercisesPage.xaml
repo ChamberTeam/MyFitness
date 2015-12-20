@@ -7,16 +7,50 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <DataTemplate x:Key="exercisesTemplate">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="{Binding Name}"
+                           HorizontalAlignment="Left"
+                           Width="200">
+                </TextBlock>
+                <TextBlock Text="{Binding Description}"
+                           HorizontalAlignment="Left"
+                           Width="200">
+                </TextBlock>
+                <TextBlock HorizontalAlignment="Right"
+                    Text="{Binding CategoryName}"
+                            Width="100">
+                </TextBlock>
+
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="Displaying list of exercises.."
-                   TextAlignment="Center"
-                   FontSize="24"
-                   TextWrapping="WrapWholeWords"
-                   Foreground="Green"
-                   FontStyle="Italic"
-                   FontWeight="Bold"
-                   FontFamily="Georgia"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Name"
+                   Grid.Row="0"
+                   Grid.Column="0"/>
+        <TextBlock Text="Description"
+                   Grid.Row="0"
+                   Grid.Column="1"/>
+        <TextBlock Text="CategoryName"
+                   Grid.Row="0"
+                   Grid.Column="2"/>
+        <ListBox   Grid.Row="1"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3"
+                     ItemsSource="{Binding Path=ContentViewModel.Exercises}"
+                     ItemTemplate="{StaticResource exercisesTemplate}">
+        </ListBox>
+
     </Grid>
 </Page>

@@ -130,6 +130,7 @@
     <Compile Include="Services\UsersService.cs" />
     <Compile Include="ViewModels\CategoriesViewModel.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\ExercisePageViewModel.cs" />
     <Compile Include="ViewModels\ExercisesViewModel.cs" />
     <Compile Include="ViewModels\ExerciseViewModel.cs" />
     <Compile Include="ViewModels\FitnessProgramPageViewModel.cs" />

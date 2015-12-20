@@ -9,7 +9,7 @@ namespace MyFitness.Universal.ViewModels
     public class ExerciseViewModel : ViewModelBase
     {
         private int id;
-        private string names;
+        private string name;
         private string description;
         private string categoryName;
 
@@ -47,16 +47,16 @@ namespace MyFitness.Universal.ViewModels
         {
             get
             {
-                return this.names;
+                return this.name;
             }
             set
             {
-                if (this.names == value)
+                if (this.name == value)
                 {
                     return;
                 }
 
-                this.names = value;
+                this.name = value;
                 this.RaisePropertyChanged(nameof(Name));
             }
         }
