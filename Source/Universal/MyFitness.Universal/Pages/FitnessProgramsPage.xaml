@@ -8,26 +8,66 @@
     mc:Ignorable="d">
 
     <Page.Resources>
+        <Style x:Key="ItemNameStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="TextAlignment" Value="Left"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="Black"/>            
+        </Style>
+        <Style x:Key="ItemContentStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="TextAlignment" Value="Left"/>
+            <Setter Property="TextWrapping" Value="WrapWholeWords"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+        
         <DataTemplate x:Key="fitnessProgramsTemplate">
-            <StackPanel Orientation="Vertical">
-                <TextBlock Text="{Binding Name}"
-                           HorizontalAlignment="Left"
-                           Width="200">
-                </TextBlock>
-                <TextBlock Text="{Binding Description}"
-                           HorizontalAlignment="Left"
-                           Width="200">
-                </TextBlock>
-                <TextBlock HorizontalAlignment="Right"
-                    Text="{Binding SuitableFor}"
-                            Width="100">
-                </TextBlock>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
 
-            </StackPanel>
+                <TextBlock Text="Category"
+                           Grid.Row="0"
+                           Grid.Column="0"
+                           Style="{StaticResource ItemNameStyle}"/>
+                <TextBlock Text="{Binding Name}"
+                           Grid.Row="0"
+                           Grid.Column="2"
+                           Style="{StaticResource ItemContentStyle}"/>
+
+                <TextBlock Text="Description"
+                           Grid.Row="1"
+                           Grid.Column="0"
+                           Style="{StaticResource ItemNameStyle}"/>
+                <TextBlock Text="{Binding Description}"
+                           Grid.Row="1"
+                           Grid.Column="2"
+                           Style="{StaticResource ItemContentStyle}"/>
+
+                <TextBlock Text="Suitable for"
+                           Grid.Row="2"
+                           Grid.Column="0"
+                           Style="{StaticResource ItemNameStyle}"/>
+                <TextBlock Text="{Binding SuitableFor}"
+                           Grid.Row="2"
+                           Grid.Column="2"
+                           Style="{StaticResource ItemContentStyle}"/>
+            </Grid>
         </DataTemplate>
     </Page.Resources>
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.RowDefinitions>
+        <ListBox ItemsSource="{Binding Path=ContentViewModel.FitnessPrograms}"
+            ItemTemplate="{StaticResource fitnessProgramsTemplate}"/>
+        <!--<Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
@@ -35,8 +75,8 @@
             <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <TextBlock Text="CategoryName"
+        </Grid.ColumnDefinitions>-->
+        <!--<TextBlock Text="CategoryName"
                    Grid.Row="0"
                    Grid.Column="0"/>
         <TextBlock Text="Description"
@@ -44,15 +84,7 @@
                    Grid.Column="1"/>
         <TextBlock Text="CategoryName"
                    Grid.Row="0"
-                   Grid.Column="2"/>
-        <ListBox   Grid.Row="1"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="3"
-                     ItemsSource="{Binding Path=ContentViewModel.FitnessPrograms}"
-                   
-                     ItemTemplate="{StaticResource fitnessProgramsTemplate}">
-        </ListBox>
-
+                   Grid.Column="2"/>-->
     </Grid>
     <!-- <Page.Resources>
         <DataTemplate x:Key="fitnessProgramsTemplate">
