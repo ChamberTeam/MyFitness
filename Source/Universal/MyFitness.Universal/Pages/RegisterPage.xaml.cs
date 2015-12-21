@@ -1,12 +1,12 @@
 ﻿namespace MyFitness.Universal.Pages
 {
     using MyFitness.Universal.ViewModels;
-    using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
     using Windows.UI.Xaml.Input;
     using Windows.UI.Popups;
     using System;
     using Windows.Web.Http;
+
     public sealed partial class RegisterPage : Page
     {
         public RegisterPage()
@@ -35,42 +35,39 @@
                 this.password.Password,
                 this.confirmPassword.Password);
 
+            var dialog = new MessageDialog("");
+            dialog.Title = "Registration";
             if (statusCode == HttpStatusCode.Ok)
             {
+                dialog = new MessageDialog("Congratulations! You have registered successfully and will be transferred to Login Page to enter your credentials!");
+                dialog.Commands.Add(new UICommand { Label = "Ok", Id = 0 });
+                var res = await dialog.ShowAsync();
 
+                if ((int)res.Id == 0)
+                {
+                    this.Frame.Navigate(typeof(LoginPage), null);
+                };
             }
             else
             {
+                dialog = new MessageDialog("Registration failed! Username might be already taken or password is less than 6 characters!");
+                dialog.Commands.Add(new UICommand { Label = "Go to Home", Id = 0 });
+                dialog.Commands.Add(new UICommand { Label = "Try again", Id = 1 });
 
+                var res = await dialog.ShowAsync();
+
+                if ((int)res.Id == 0)
+                {
+                    this.Frame.Navigate(typeof(HomePage), null);
+                }
+
+                if ((int)res.Id == 1)
+                {
+                    this.Frame.Navigate(typeof(RegisterPage), null);
+                }
             }
-            // if registered successfully
-            var dialog = new MessageDialog("Congratulations! You have registered successfully and will be transferred to Home Page!");
-            dialog.Title = "Registration";
-            dialog.Commands.Add(new UICommand { Label = "Ok", Id = 0 });
-            var res = await dialog.ShowAsync();
-
-            if ((int)res.Id == 0)
-            {
-                this.Frame.Navigate(typeof(HomePage), null);
-            };
-
             // Implement how to go back to previous page?
             // this.Frame.GoBack();
         }
-
-
-        //private async void ButtonShowMessageDialog_Click(object sender, RoutedEventArgs e)
-        //{
-        //    var dialog = new MessageDialog("Are you sure?");
-        //    dialog.Title = "Really?";
-        //    dialog.Commands.Add(new UICommand { Label = "Ok", Id = 0 });
-        //    dialog.Commands.Add(new UICommand { Label = "Cancel", Id = 1 });
-        //    var res = await dialog.ShowAsync();
-
-        //    if ((int)res.Id == 0)
-        //    {
-        //        this.Frame.Navigate(typeof(HomePage), null);
-        //    };
-        //}
     }
 }
