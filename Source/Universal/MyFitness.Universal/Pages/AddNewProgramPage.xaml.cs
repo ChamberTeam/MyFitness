@@ -37,5 +37,21 @@ namespace MyFitness.Universal.Pages
                 this.DataContext = value;
             }
         }
+
+        private void OnAddFitnesProgramTapped(object sender, TappedRoutedEventArgs e)
+        {
+            var description = this.descriptionTextBox.Text;
+            var programName = this.programNameTextBox.Text;
+            var category = this.categoriesSelectedItem.SelectedItem as CategoryViewModel;
+            var suitableFor = this.suitableForSelectedItem.SelectedItem.ToString();
+
+            IEnumerable<int> selectedExercises = this.AddNewProgramPageViewModel
+                .Exercises
+                .Exercises
+                .Where(d => d.IsSelected)
+                .Select(d => d.Id);
+
+            this.AddNewProgramPageViewModel.FitnessProgram.AddFitnessProgram(programName, description, suitableFor, category.Name, selectedExercises);
+        }
     }
 }

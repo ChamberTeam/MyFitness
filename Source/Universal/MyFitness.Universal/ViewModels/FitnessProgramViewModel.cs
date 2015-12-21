@@ -30,7 +30,7 @@
       {
           var user = await this.userViewModel.GetUserAsync();
     
-          var fitnessProgram = this.fitnessProgramsService.Add(user.Token, name, description, suitableFor, categoryName);
+          var fitnessProgram = await this.fitnessProgramsService.Add(user.Token, name, description, suitableFor, categoryName);
             foreach (var exercise in exercisesId)
             {
                 this.fitnessProgramsService.AddExerciseToProgram(user.Token, exercise, fitnessProgram.Id);

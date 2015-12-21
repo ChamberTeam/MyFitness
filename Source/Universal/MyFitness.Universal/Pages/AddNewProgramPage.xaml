@@ -6,18 +6,54 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
+    <Page.Resources>
+        <DataTemplate x:Key="categories">
+            <ComboBoxItem>
+                <TextBlock Text="{Binding Path=Name}" />
+            </ComboBoxItem>
+        </DataTemplate>
+        <DataTemplate x:Key="exercises">
+            <ListViewItem>
+                <CheckBox Content="{Binding Name}" IsChecked="{Binding Path=IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </ListViewItem>
+        </DataTemplate>
+        <DataTemplate x:Key="SuitableFor">
+            <ComboBoxItem>
+                <TextBlock Text="{Binding}" />
+            </ComboBoxItem>
+        </DataTemplate>
+    </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel>
-        <TextBox PlaceholderText="Program name" />
-            <ComboBox ItemsSource="{Binding Categories.Categories}">
-              <!--=  <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Name="{Binding Name}" />
-                </DataTemplate>
-                </ComboBox.ItemTemplate>
-                 -->
-            </ComboBox>
-        </StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <TextBox PlaceholderText="Program name"
+                 Grid.Row="0"
+                 Name="programNameTextBox" />
+        <TextBox PlaceholderText="Description"
+                     Grid.Row="1"
+                 Name="descriptionTextBox" />
+        <ComboBox Name="categoriesSelectedItem"
+                      Grid.Row="2"
+                      ItemsSource="{Binding Path=Categories.Categories}"
+                      ItemTemplate="{StaticResource categories}" />
+
+        <ComboBox Name="suitableForSelectedItem"
+                      Grid.Row="3"
+                      ItemsSource="{Binding Path=SuitableFor}"
+                      ItemTemplate="{StaticResource SuitableFor}" />
+        <ListView Grid.Row="4"
+                      ItemsSource="{Binding Path=Exercises.Exercises}"
+                      ItemTemplate="{StaticResource exercises}" />
+        <Button Grid.Row="5"
+                Content="Add Fitness Program"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                Tapped="OnAddFitnesProgramTapped"/>
     </Grid>
 </Page>

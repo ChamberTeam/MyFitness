@@ -12,6 +12,7 @@ namespace MyFitness.Universal.ViewModels
         private string name;
         private string description;
         private string categoryName;
+        private bool isSelected;
 
         public ExerciseViewModel()
             : this(string.Empty, string.Empty, string.Empty)
@@ -96,5 +97,24 @@ namespace MyFitness.Universal.ViewModels
                 this.RaisePropertyChanged(nameof(categoryName));
             }
         }
+
+        public bool IsSelected
+        {
+            get
+            {
+                return this.isSelected;
+            }
+            set
+            {
+                if (this.isSelected == value)
+                {
+                    return;
+                }
+
+                this.isSelected = value;
+                this.RaisePropertyChanged(nameof(isSelected));
+            }
+        }
+
     }
 }

@@ -106,6 +106,7 @@
     <Compile Include="Helpers\DelegateCommand.cs" />
     <Compile Include="Helpers\HttpClientHelper.cs" />
     <Compile Include="Helpers\SqlLiteSetup.cs" />
+    <Compile Include="Models\SuitableFor.cs" />
     <Compile Include="Models\UserToken.cs" />
     <Compile Include="Pages\AddNewProgramPage.xaml.cs" />
     <Compile Include="Pages\ExercisesPage.xaml.cs" />
@@ -114,9 +115,6 @@
     <Compile Include="Pages\HomePage.xaml.cs" />
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\NearbyFitnessPage.xaml.cs" />
     <Compile Include="Pages\RegisterPage.xaml.cs">
@@ -195,10 +193,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\LoginPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

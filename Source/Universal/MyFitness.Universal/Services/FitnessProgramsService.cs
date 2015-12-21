@@ -54,7 +54,7 @@
         public async void AddExerciseToProgram(string token, int exerciseId, int fitnessProgramId)
         {
             this.HttpClient.DefaultRequestHeaders.Authorization = new HttpCredentialsHeaderValue("Bearer", token);
-            var response = await this.HttpClient.PostAsync(new Uri(ServerUrlConstants.baseUrl + $"fitnessPrograms?exerciseId{exerciseId}&fitnessProgramId{fitnessProgramId}"), null);
+            var response = await this.HttpClient.PostAsync(new Uri(ServerUrlConstants.baseUrl + $"fitnessPrograms?exerciseId={exerciseId}&fitnessProgramId={fitnessProgramId}"), null);
         }
     }
 }
