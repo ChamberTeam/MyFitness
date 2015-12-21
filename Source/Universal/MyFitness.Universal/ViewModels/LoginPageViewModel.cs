@@ -4,7 +4,7 @@
     using MyFitness.Universal.Models;
     using MyFitness.Universal.Services;
     using System.Threading.Tasks;
-
+    using Windows.Web.Http;
     public class LoginPageViewModel
     {
         private SqlLiteSetup sqlLite;
@@ -21,12 +21,10 @@
         public UserViewModel User { get; set; }
 
 
-        public async Task<UserToken> LoginUser(string userName, string password)
+        public async Task<HttpStatusCode> LoginUser(string userName, string password)
         {
             var addedUser = await this.usersService.LoginUser(userName, password);
-            var user = await this.User.GetUserAsync();
-
-            return user;
+            return addedUser;
         }
     }
 }

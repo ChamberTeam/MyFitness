@@ -48,7 +48,7 @@
             return response.StatusCode;
         }
 
-        public async Task<int> LoginUser(string userName, string password)
+        public async Task<HttpStatusCode> LoginUser(string userName, string password)
         {
             var loginInfo = new HttpFormUrlEncodedContent(new[]
             {
@@ -60,10 +60,15 @@
             var response = await this.HttpClient.PostAsync(new Uri(ServerUrlConstants.baseUrl + "Token"), loginInfo);
             var content = await response.Content.ReadAsStringAsync();
             var user = JsonConvert.DeserializeObject<UserToken>(content);
+            if (user.Token == null)
+            {
+                return HttpStatusCode.BadRequest;
+            }
+
             var userViewModel = new UserViewModel();
             var addedUser = await userViewModel.InsertUserAsync(user);
 
-            return addedUser;
+            return HttpStatusCode.Ok;
         }
     }
 }

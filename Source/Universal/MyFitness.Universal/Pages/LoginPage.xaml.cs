@@ -2,6 +2,7 @@
 {
     using MyFitness.Universal.ViewModels;
     using System;
+    using Windows.Web.Http;
     using Windows.UI.Xaml.Controls;
     using Windows.UI.Xaml.Input;
 
@@ -28,6 +29,15 @@
         private async void LoginTapped(object sender, TappedRoutedEventArgs e)
         {
             var res = await this.ViewModel.LoginUser(this.userName.Text, this.password.Password);
+            if (res == HttpStatusCode.Ok)
+            {
+
+            }
+            else
+            {
+
+            }
+
             this.Frame.Navigate(typeof(HomePage), null);
         }
     }
