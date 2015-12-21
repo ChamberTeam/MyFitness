@@ -2,7 +2,8 @@
 {
     using MyFitness.Universal.Helpers;
     using MyFitness.Universal.Services;
-
+    using Windows.Web.Http;
+    using System.Threading.Tasks;
     public class RegisterPageViewModel
     {
         private SqlLiteSetup sqlLite;
@@ -19,9 +20,10 @@
         public UserViewModel User { get; set; }
 
 
-        public void RegisterUser(string userName, string email, string password, string confirmPassword)
+        public async Task<HttpStatusCode> RegisterUser(string userName, string email, string password, string confirmPassword)
         {
-            this.usersService.RegisterUser(userName, email, password, confirmPassword);
+            var statusCode = await this.usersService.RegisterUser(userName, email, password, confirmPassword);
+            return statusCode;
         }
 
     }

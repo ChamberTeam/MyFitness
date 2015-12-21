@@ -34,7 +34,7 @@
             return user;
         }
 
-        public async void RegisterUser(string userName, string email, string password, string confirmPassword)
+        public async Task<HttpStatusCode> RegisterUser(string userName, string email, string password, string confirmPassword)
         {
             var user = new HttpFormUrlEncodedContent(new[]
             {
@@ -45,6 +45,7 @@
             });
 
             var response = await this.HttpClient.PostAsync(new Uri(ServerUrlConstants.baseUrl + "Account/Register"), user);
+            return response.StatusCode;
         }
 
         public async Task<int> LoginUser(string userName, string password)

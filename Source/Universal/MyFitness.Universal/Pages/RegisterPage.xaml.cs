@@ -6,7 +6,7 @@
     using Windows.UI.Xaml.Input;
     using Windows.UI.Popups;
     using System;
-
+    using Windows.Web.Http;
     public sealed partial class RegisterPage : Page
     {
         public RegisterPage()
@@ -29,12 +29,20 @@
 
         private async void RegisterTapped(object sender, TappedRoutedEventArgs e)
         {
-            this.ViewModel.RegisterUser(
+            var statusCode = await this.ViewModel.RegisterUser(
                 this.userName.Text,
                 this.email.Text,
                 this.password.Password,
                 this.confirmPassword.Password);
 
+            if (statusCode == HttpStatusCode.Ok)
+            {
+
+            }
+            else
+            {
+
+            }
             // if registered successfully
             var dialog = new MessageDialog("Congratulations! You have registered successfully and will be transferred to Home Page!");
             dialog.Title = "Registration";
