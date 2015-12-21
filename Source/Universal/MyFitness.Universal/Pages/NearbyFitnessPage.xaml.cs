@@ -3,7 +3,7 @@
     using System;
     using Windows.Devices.Geolocation;
     using Windows.UI.Xaml.Controls;
-
+    using Windows.UI.Xaml.Navigation;
     public sealed partial class NearbyFitnessPage : Page
     {
         private Geolocator geolocator;
@@ -12,7 +12,7 @@
         public NearbyFitnessPage()
         {
             this.InitializeComponent();
-
+            this.TheProgressRing.IsActive = true;
             this.InitGeoLocation();
         }
 
@@ -29,6 +29,11 @@
             var address = string.Format("https://www.google.com/maps/search/Fitness/@{0},{1},15z", latitude, longtitude);
             this.uri = new Uri(address);
             this.webBrowser.Navigate(uri);
+        }
+
+        private void OnWebBrowserLoadCompleted(object sender, NavigationEventArgs e)
+        {
+            this.TheProgressRing.IsActive = false;
         }
     }
 }

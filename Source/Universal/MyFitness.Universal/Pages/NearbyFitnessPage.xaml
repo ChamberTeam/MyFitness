@@ -8,16 +8,9 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="Displaying map of nearby fitness gyms.."
-                   TextAlignment="Center"
-                   FontSize="24"
-                   TextWrapping="WrapWholeWords"
-                   Foreground="Green"
-                   FontStyle="Italic"
-                   FontWeight="Bold"
-                   FontFamily="Georgia"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"/>
-        <WebView x:Name="webBrowser"/>
+        <WebView x:Name="webBrowser" LoadCompleted="OnWebBrowserLoadCompleted"/>
+        <ProgressRing Name="TheProgressRing" Foreground="ForestGreen"
+                          Width="50"
+                          Height="50"/>
     </Grid>
 </Page>
