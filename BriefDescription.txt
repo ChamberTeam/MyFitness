@@ -1,0 +1,3 @@
+ ---- MyFitness Application ----
+ 
+ Application providing to the user different training programs, the ability to add new programs by himself, find easily a nearby place where he can train, etc..
