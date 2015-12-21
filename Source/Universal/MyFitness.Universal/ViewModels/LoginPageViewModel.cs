@@ -1,14 +1,10 @@
-﻿using MyFitness.Universal.Helpers;
-using MyFitness.Universal.Models;
-using MyFitness.Universal.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MyFitness.Universal.ViewModels
+﻿namespace MyFitness.Universal.ViewModels
 {
+    using MyFitness.Universal.Helpers;
+    using MyFitness.Universal.Models;
+    using MyFitness.Universal.Services;
+    using System.Threading.Tasks;
+
     public class LoginPageViewModel
     {
         private SqlLiteSetup sqlLite;

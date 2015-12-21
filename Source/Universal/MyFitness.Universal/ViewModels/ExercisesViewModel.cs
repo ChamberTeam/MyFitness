@@ -1,14 +1,10 @@
-﻿using MyFitness.Universal.Extensions;
-using MyFitness.Universal.Services;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MyFitness.Universal.ViewModels
+﻿namespace MyFitness.Universal.ViewModels
 {
+    using MyFitness.Universal.Extensions;
+    using MyFitness.Universal.Services;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+
     public class ExercisesViewModel : IContentViewModel
     {
         private ObservableCollection<ExerciseViewModel> exercises;

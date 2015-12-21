@@ -1,18 +1,18 @@
-﻿using MyFitness.Universal.Constants;
-using MyFitness.Universal.Helpers;
-using MyFitness.Universal.Models;
-using MyFitness.Universal.ViewModels;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.Web.Http;
-using Windows.Web.Http.Headers;
-
-namespace MyFitness.Universal.Services
+﻿namespace MyFitness.Universal.Services
 {
+    using MyFitness.Universal.Constants;
+    using MyFitness.Universal.Helpers;
+    using MyFitness.Universal.Models;
+    using MyFitness.Universal.ViewModels;
+    using Newtonsoft.Json;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Windows.Web.Http;
+    using Windows.Web.Http.Headers;
+
     public class CategoriesService : HttpClientHelper
     {
         public CategoriesService()

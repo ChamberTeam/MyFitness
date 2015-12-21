@@ -1,19 +1,19 @@
-﻿using MyFitness.Universal.Constants;
-using MyFitness.Universal.Helpers;
-using MyFitness.Universal.Models;
-using MyFitness.Universal.ViewModels;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.Web.Http;
-using Windows.Web.Http.Headers;
-
-namespace MyFitness.Universal.Services
+﻿namespace MyFitness.Universal.Services
 {
+    using MyFitness.Universal.Constants;
+    using MyFitness.Universal.Helpers;
+    using MyFitness.Universal.Models;
+    using MyFitness.Universal.ViewModels;
+    using Newtonsoft.Json;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Net.Http.Headers;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Windows.Web.Http;
+    using Windows.Web.Http.Headers;
+
     public class ExercisesService : HttpClientHelper
     {
         public ExercisesService()

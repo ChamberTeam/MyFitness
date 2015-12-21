@@ -1,10 +1,10 @@
-﻿using MyFitness.Universal.Extensions;
-using MyFitness.Universal.Services;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-
-namespace MyFitness.Universal.ViewModels
+﻿namespace MyFitness.Universal.ViewModels
 {
+    using MyFitness.Universal.Extensions;
+    using MyFitness.Universal.Services;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+
     public class FitnessProgramsViewModel : IContentViewModel
     {
         private FitnessProgramsService fitnessProgramsService;

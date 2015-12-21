@@ -9,6 +9,7 @@
     using Constants;
     using Newtonsoft.Json;
     using ViewModels;
+
     public class UsersService : HttpClientHelper
     {
         public UsersService()

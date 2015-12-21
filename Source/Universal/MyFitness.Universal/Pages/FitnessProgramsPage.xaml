@@ -61,11 +61,17 @@
         </DataTemplate>
     </Page.Resources>
     
-    <StackPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
         <TextBlock Text="Fitness Programs" Style="{StaticResource TitleStyle}"/>
-        <ListBox Background="Transparent" ItemsSource="{Binding Path=ContentViewModel.FitnessPrograms}"
-            ItemTemplate="{StaticResource fitnessProgramsTemplate}"/>
-    </StackPanel>
+        <ListBox  Background="Transparent"
+                  Grid.Row="2"
+                  ItemsSource="{Binding Path=ContentViewModel.FitnessPrograms}"
+                  ItemTemplate="{StaticResource fitnessProgramsTemplate}"/>
+    </Grid>
     <!-- <Page.Resources>
         <DataTemplate x:Key="fitnessProgramsTemplate">
             <StackPanel Orientation="Horizontal">

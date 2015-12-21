@@ -10,6 +10,7 @@
     using ViewModels;
     using Windows.Web.Http;
     using Windows.Web.Http.Headers;
+
     public class FitnessProgramsService : HttpClientHelper
     {
         public FitnessProgramsService()

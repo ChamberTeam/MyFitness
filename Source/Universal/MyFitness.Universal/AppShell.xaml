@@ -60,7 +60,7 @@
                     <Frame Name="appShellFrame" />
                     <Grid ManipulationMode="TranslateX"
                         ManipulationCompleted="OnSplitViewOpenerManipulationCompleted"
-                        Width="20"
+                        Width="200"
                         Background="Transparent"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Stretch">
