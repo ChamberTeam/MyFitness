@@ -44,6 +44,6 @@
                     Grid.Column="1"
                     Content="Login"
                     Style="{StaticResource BasicBtnStyle}"
-                    Tapped="OnloginBtnTapped" />
+                    Tapped="OnLoginBtnTapped" />
     </Grid>
 </Page>

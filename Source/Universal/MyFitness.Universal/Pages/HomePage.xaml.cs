@@ -43,7 +43,7 @@
             this.Frame.Navigate(typeof(RegisterPage), null);
         }
 
-        private void OnloginBtnTapped(object sender, TappedRoutedEventArgs e)
+        private void OnLoginBtnTapped(object sender, TappedRoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(LoginPage), null);
         }

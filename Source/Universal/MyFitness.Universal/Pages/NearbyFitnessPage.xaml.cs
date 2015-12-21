@@ -4,6 +4,7 @@
     using Windows.Devices.Geolocation;
     using Windows.UI.Xaml.Controls;
     using Windows.UI.Xaml.Navigation;
+
     public sealed partial class NearbyFitnessPage : Page
     {
         private Geolocator geolocator;
